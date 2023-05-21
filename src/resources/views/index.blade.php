@@ -16,7 +16,8 @@
       <div class="contact-form__heading">
         <h2>お問い合わせ</h2>
       </div>
-      <form class="form">
+      <form class="form" action="/contacts/confirm" method="post">
+        @csrf
         <div class="form__group">
           <div class="form__group-title">
             <span class="form__label--item">お名前</span>
@@ -24,23 +25,33 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-              <input type="text" name="fullname" placeholder="山田" />
-              <input type="text" name="fullname" placeholder="太郎" />
+              <input type="text" name="fullname" value="{{ old('fullname') }}" />
+              <p class="form__example">例）山田</p>
+              <input type="text" name="fullname" value="{{ old
+                ('fullname') }}" />
+              <p class="form__example">例）太郎</p>
             </div>
             <div class="form__error">
-              <!--バリデーション機能を実装したら記述します。-->
+              @error('fullname')
+              {{ $message }}
+              @enderror
             </div>
           </div>
         </div>
         <div class="form__group">
           <div class="form__group-title">
-            <span class="form__lavel--item">性別</span>
-            <span class ="form__lavel--required">※</span>
+            <span class="form__label--item">性別</span>
+            <span class ="form__label--required">※</span>
           </div>
           <div class="form__group--content">
-            <din class="form__input--text">
-              <input type="radio" name="gender" />男性
-              <input type="radio" name="gender" />女性
+            <div class="form__input--radio">
+                <input type="radio" id="1" name="gender" value="1" value="{{ old('like','gender') == 'male' ? 'checked' : '' }}" /><label for="male">男性</label>
+                <input type="radio" id="2" name="gender" value="2" value="{{ old('gender') }}" /><label for="female">女性</label>
+            </div>
+            <div class="form__error">
+              @error('gender')
+              {{ $message }}
+              @enderror
             </div>
           </div>
         </div>
@@ -51,10 +62,13 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-              <input type="email" name="email" placeholder="test@example.com" />
+              <input type="email" name="email" value="{{ old('email') }}" />
+              <p class="form__example">例）test@example.com</p>
             </div>
             <div class="form__error">
-              <!--バリデーション機能を実装したら記述します。-->
+              @error('email')
+              {{ $message }}
+              @enderror
             </div>
           </div>
         </div>
@@ -65,21 +79,41 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-              〒<input type="text" name="postcode" placeholder="123-4567" />
+              〒<input type="text" name="postcode" value="{{ old('postcode') }}" />
+              <p class="form__example">例）123-4567</p>
             </div>
             <div class="form__error">
-              <!--バリデーション機能を実装したら記述します。-->
+              @error('postcode')
+              {{ $message }}
+              @enderror
             </div>
           </div>
         </div>
         <div class="form__group">
-          <span class="form__label--item">住所</span>
-          <span class="form__label--required">※</span>
-          <input type="text" name="adress" placeholder="東京都渋谷区千駄ヶ谷1-2-3" />
+          <div class="form__group-title">
+            <span class="form__label--item">住所</span>
+            <span class="form__label--required">※</span>
+          </div>
+          <div class="form__group-content">
+            <div class="form__input--text">
+              <input type="text" name="address" value="{{ old('address') }}" />
+              <p class="form__example">例）東京都渋谷区千駄ヶ谷1-2-3</p>
+            </div>
+            <div class="form__error">
+              @error('address')
+              {{ $message }}
+              @enderror
+            </div>
+          </div>
         </div>
         <div class="form__group">
-          <span class="form__label--item">建物名</span>
-          <input type="text" name="building_name" placeholder="千駄ヶ谷マンション101" />
+          <div class="form__group-title">
+           <span class="form__label--item">建物名</span>
+          </div>
+          <div class="form__group-content">
+            <input type="text" name="building_name" />
+            <p class="form__example">例）千駄ヶ谷マンション101</P>
+          </div>
         </div>
         <div class="form__group">
           <div class="form__group-title">
@@ -88,8 +122,12 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--textarea">
-              <textarea name="option" placeholder="いつもお世話になっております。先日、貴社製品を購入させていただきました。この度、不具合が生じ、説明書に沿って操作を進めていましたが上手く行きませんでした。どのように直せば良いかご教授いただきたいです。"></textarea>
+              <textarea name="option" cols="30" rows="3" value="{{ old('option') }}" readonly></textarea>
             </div>
+            <div class="form__error">
+              @error('option')
+              {{ $message }}
+              @enderror
           </div>
         </div>
         <div class="form__button">
