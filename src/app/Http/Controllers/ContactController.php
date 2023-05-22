@@ -16,13 +16,15 @@ class ContactController extends Controller
 
    public function confirm(ContactRequest $request)
   {
-    $contact = $request->only(['fullname', 'gender','email', 'postcode', 'address', 'building_name', 'option']);
+    $contact = $request->only(['fullname', 'gender','email', 'postcode', 'address', 'option']);
+    Contact::find($request->id)->confirm($contact);
+    $inputs = $request::all();
     return view('confirm', compact('contact'));
   }
 
   public function store(ContactRequest $request)
   {
-    $contact = $request->only(['fullname', 'gender', 'email', 'postcode', 'address', 'building_name', 'option']);
+    $contact = $request->only(['fullname', 'gender', 'email', 'postcode', 'address', 'option']);
     Contact::create($contact);
     return view('thanks');
   }

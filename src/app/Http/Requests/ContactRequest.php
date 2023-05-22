@@ -27,10 +27,15 @@ class ContactRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'gender' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'postcode' => ['required', 'alpha_dash:ascii', 'max:8'],
+            'postcode' => ['required', 'regex:/^[0-9]{3}-[0-9]{4}$/u', 'max:8'],
             'address' => ['required', 'string', 'max:255'],
             'option' => ['required', 'max:120'], 
         ];
+    }
+
+    public function prepareForValidation()
+    {
+        $this->merge(['postcode' =>mb_convert_kana($this->postcode, 'as')]);
     }
 
     public function messages()
@@ -45,7 +50,7 @@ class ContactRequest extends FormRequest
              'email.email' => '有効なメールアドレス形式を入力してください',
              'email.max' => 'メールアドレスを255文字以下で入力してください',
              'postcode.required' => '郵便番号を入力してください',
-             'postcode.alpha_dash:ascii' => '郵便番号を半角英数字、ダッシュ（ハイフン）で入力してください',
+             'postcode.regex:/^[0-9]{3}-[0-9]{4}$/u' => '郵便番号を半角英数字3桁、ハイフンを挟み半角英数字4桁で入力してください',
              'postcode.max' => '郵便番号を8文字以下で入力してください',
              'address.required' => '住所を入力してください',
              'address.string' => '住所を文字列で入力してください',
