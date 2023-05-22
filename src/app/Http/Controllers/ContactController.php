@@ -18,7 +18,6 @@ class ContactController extends Controller
   {
     $contact = $request->only(['fullname', 'gender','email', 'postcode', 'address', 'option']);
     Contact::find($request->id)->confirm($contact);
-    $inputs = $request::all();
     return view('confirm', compact('contact'));
   }
 

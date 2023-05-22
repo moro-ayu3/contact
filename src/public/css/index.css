@@ -21,9 +21,16 @@
   margin-bottom: 15px;
 }
 
+.form__group-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .form__label-item {
+  font-size: 50px;
   font-weight: bold;
-  text-align: center;
+  color: #000;
 }
 
 .form__label--required {
@@ -39,12 +46,21 @@
   text-align: left;
 }
 
-.form__input--text input,
+.form__input--text input {
+  padding: 10px;
+  width: 600px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+
+  appearance: none;
+}
+
 .form__input--textarea textarea {
   padding: 10px;
   width: 600px;
   border: 1px solid #ddd;
   border-radius: 3px;
+  margin-left: 50px;
 
   appearance: none;
 }
@@ -57,21 +73,69 @@
   height: 180px;
 }
 
+.form__input--text-1 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.form__input--text-2 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.fullname {
+  text-align: left;
+  width: 300px;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.form__input--radio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.radio {
+  text-align: left;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ddd;
+  margin: 0, auto;
+}
+
+.label__male {
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.label__female {
+  margin-left: 10px;
+}
+
 .form__example {
   color: #a9a9a9;
 }
 
 .form__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 30px;
 }
 
 .form__button-submit {
   padding: 10px;
-  width: 30%;
+  width: 200px;
   height: 50px;
   border: none;
   border-radius: 3px;
   background: #000;
   color: #fff;
+  font-size: 20px;
+  font-weight: bold;
   cursor: pointer;
 }

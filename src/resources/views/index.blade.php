@@ -21,17 +21,19 @@
         @csrf
         <div class="form__group">
           <div class="form__group-title">
-            <span class="form__label--item">お名前</span>
+            <h3 class="form__label--item">お名前</h3>
             <span class="form__label--required">※</span>
           </div>
           <div class="form__group-content">
-            <div class="form__input--text">
-              <input type="text" name="fullname" value="{{ old('fullname') }}" />
-              <p class="form__example">例）山田</p>
-              <input type="text" name="fullname" value="{{ old
-                ('fullname') }}" />
-              <p class="form__example">例）太郎</p>
+            <div class="form__input--text-1">
+              <input type="text" name="fullname" class="fullname" value="{{ old('fullname') }}" />
             </div>
+            <p class="form__example">例）山田</p>
+            <div class="form__input--text-2">
+              <input type="text" name="fullname" class="fullname" value="{{ old
+                ('fullname') }}" />
+            </div>
+            <p class="form__example">例）太郎</p>
             <div class="form__error">
               @error('fullname')
               {{ $message }}
@@ -41,13 +43,13 @@
         </div>
         <div class="form__group">
           <div class="form__group-title">
-            <span class="form__label--item">性別</span>
+            <h3 class="form__label--item">性別</h3>
             <span class ="form__label--required">※</span>
           </div>
           <div class="form__group--content">
             <div class="form__input--radio">
-                <input type="radio" id="1" name="gender" value="1" value="{{ old('like','gender') == 'male' ? 'checked' : '' }}" /><label for="male">男性</label>
-                <input type="radio" id="2" name="gender" value="2" value="{{ old('gender') }}" /><label for="female">女性</label>
+                <input type="radio" class="radio" id="1" name="gender" value="1" value="{{ old('like','gender') == 'male' ? 'checked' : '' }}" /><label for="male" class="label__male">男性</label>
+                <input type="radio" class="radio" id="2" name="gender" value="2" value="{{ old('gender') }}" /><label for="female" class="label__female">女性</label>
                 <input type="hidden" name="id" value="id">
             </div>
             <div class="form__error">
@@ -59,14 +61,14 @@
         </div>
         <div class="form__group">
           <div class="form__group-title">
-            <span class="form__label--item">メールアドレス</span>
+            <h3 class="form__label--item">メールアドレス</h3>
             <span class="form__label--required">※</span>
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
               <input type="email" name="email" value="{{ old('email') }}" />
-              <p class="form__example">例）test@example.com</p>
             </div>
+            <p class="form__example">例）test@example.com</p>
             <div class="form__error">
               @error('email')
               {{ $message }}
@@ -76,14 +78,14 @@
         </div>
         <div class="form__group">
           <div class="form__group-title">
-            <span class="form__label--item">郵便番号</span>
+            <h3 class="form__label--item">郵便番号</h3>
             <span class="form__label--required">※</span>
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
               〒<input type="text" name="postcode" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2address(this,'','address','address');" value="{{ old('postcode') }}" />
-              <p class="form__example">例）123-4567</p>
             </div>
+            <p class="form__example">例）123-4567</p>
             <div class="form__error">
               @error('postcode')
               {{ $message }}
@@ -93,14 +95,14 @@
         </div>
         <div class="form__group">
           <div class="form__group-title">
-            <span class="form__label--item">住所</span>
+            <h3 class="form__label--item">住所</h3>
             <span class="form__label--required">※</span>
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
               <input type="text" name="address" size="60" value="{{ old('address') }}" />
-              <p class="form__example">例）東京都渋谷区千駄ヶ谷1-2-3</p>
             </div>
+            <p class="form__example">例）東京都渋谷区千駄ヶ谷1-2-3</p>
             <div class="form__error">
               @error('address')
               {{ $message }}
@@ -110,16 +112,18 @@
         </div>
         <div class="form__group">
           <div class="form__group-title">
-           <span class="form__label--item">建物名</span>
+           <h3 class="form__label--item">建物名</h3>
           </div>
           <div class="form__group-content">
-            <input type="text" name="building_name" />
+            <div class="form__input--text">
+              <input type="text" name="building_name" />
+            </div>
             <p class="form__example">例）千駄ヶ谷マンション101</P>
           </div>
         </div>
         <div class="form__group">
           <div class="form__group-title">
-            <span class="form__label--item">ご意見</span>
+            <h3 class="form__label--item">ご意見</h3>
             <span class="form__label--required">※</span>
           </div>
           <div class="form__group-content">
