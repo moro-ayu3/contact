@@ -34,7 +34,7 @@ class ContactController extends Controller
   {
     $contacts = Contact::Paginate(4)->FullnameSearch($request->fullname)->GenderSearch($request->gender)->DateSearch($request->date)->EmailSearch($request->email)->get();
 
-    return view('search', compact('contacts'));
+    return view('search', compact('contacts'))->with('message', '25文字以上の場合は...');;
   }
 
   public function delete(Request $request)

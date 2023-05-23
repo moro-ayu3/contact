@@ -48,7 +48,7 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-              <input type="date" name="date" value="{{ old('date') }}" />~<input type="date" name="date" value="{{ old('date') }}">
+              <input type="date" name="date" value="{{ old('date') }}" />{{ $contact->created_at }}~<input type="date" name="date" value="{{ old('date') }}">{{ $contact->created_at }}
             </div>
           </div>
         </div>
@@ -103,6 +103,16 @@
           @endforeach
         </tr>
       </table>
+      <div class="option__alert">
+        @if(session('message'))
+          <div class="option__alert--message">
+           {{ session('message') }}
+          </div>
+        @endif
+        <div class="option__alert--over">
+          <a href="#" class="sample_link"></a>
+        </div>
+      </div>
     </div>
   </main>
 </body>
