@@ -54,7 +54,7 @@
             <tr class="confirm-table__row">
               <th class="confirm-table__header">建物名</th>
               <td class="confirm-table__text">
-                <input type="text" name="building_name" value="{{ $contact['building_name'] }}" readonly />
+                <input type="text" name="building_name" />
               </td>
             </tr>
             <tr class="confirm-table__row">
@@ -66,11 +66,11 @@
           </table>
         </div>
         <div class="form__button">
-          <button class="form__button-submit" type="submit" value="thanks">送信</button>
+          <button class="form__button-submit" type="submit" value="送信">送信</button>
         </div>
       </form>
       <div class="form__return">
-       <a class="form__return-link" href="/">修正する</a>
+       <a class="form__return-link" href="/" >修正する</a>
       </div>
     </div>
   </main>

@@ -25,15 +25,15 @@
             <span class="form__label--required">※</span>
           </div>
           <div class="form__group-content">
+            <div class="form__input--text">
+              <input type="text" name="fullname" class="fullname" value="{{ old('fullname', $contact->fullname) }}" />
+            </div>
             <div class="form__input--text-1">
-              <input type="text" name="fullname" class="fullname" value="{{ old('fullname') }}" />
+              <input type="text" name="fullname" class="fullname" value="{{ old
+                ('fullname', $contact->fullname) }}" />
             </div>
             <p class="form__example">例）山田</p>
-            <div class="form__input--text-2">
-              <input type="text" name="fullname" class="fullname" value="{{ old
-                ('fullname') }}" />
-            </div>
-            <p class="form__example">例）太郎</p>
+            <p class="form__example-1">例）太郎</p>
             <div class="form__error">
               @error('fullname')
               {{ $message }}
@@ -48,8 +48,8 @@
           </div>
           <div class="form__group--content">
             <div class="form__input--radio">
-                <input type="radio" class="radio" id="1" name="gender" value="1" value="{{ old('like','gender') == 'male' ? 'checked' : '' }}" /><label for="male" class="label__male">男性</label>
-                <input type="radio" class="radio" id="2" name="gender" value="2" value="{{ old('gender') }}" /><label for="female" class="label__female">女性</label>
+                <input type="radio" class="radio" id="1" name="gender" value="1" value="{{ old('like','gender', $contact->gender) == 'male' ? 'checked' : '' }}" /><label for="male" class="label__male">男性</label>
+                <input type="radio" class="radio" id="2" name="gender" value="2" value="{{ old('gender', $contact->gender) }}" /><label for="female" class="label__female">女性</label>
                 <input type="hidden" name="id" value="id">
             </div>
             <div class="form__error">
@@ -66,7 +66,7 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-              <input type="email" name="email" value="{{ old('email') }}" />
+              <input type="email" name="email" value="{{ old('email', $contact->email) }}" />
             </div>
             <p class="form__example">例）test@example.com</p>
             <div class="form__error">
@@ -83,7 +83,7 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-              〒<input type="text" name="postcode" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2address(this,'','address','address');" value="{{ old('postcode') }}" />
+              〒<input type="text" name="postcode" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2address(this,'','address','address');" value="{{ old('postcode', $contact->postcode) }}" />
             </div>
             <p class="form__example">例）123-4567</p>
             <div class="form__error">
@@ -100,7 +100,7 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-              <input type="text" name="address" size="60" value="{{ old('address') }}" />
+              <input type="text" name="address" required autocomplete="text" size="60" value="{{ old('address', $contact->address) }}" />
             </div>
             <p class="form__example">例）東京都渋谷区千駄ヶ谷1-2-3</p>
             <div class="form__error">
@@ -128,7 +128,7 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--textarea">
-              <textarea name="option" class="form-textarea"></textarea>
+              <textarea name="option" class="form-textarea">{{ old('option', $contact->option) }}</textarea>
             </div>
             <div class="form__error">
               @error('option')

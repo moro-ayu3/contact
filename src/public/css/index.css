@@ -1,7 +1,7 @@
 .contact-form__content {
   margin: 0 auto;
   padding: 30px 15px;
-  max-width: 1230px;
+  max-width: 2000px;
 }
 
 .contact-form__heading {
@@ -25,9 +25,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 50px;
 }
 
 .form__label-item {
+  display: flex;
+  flex-direction: row;
   font-size: 50px;
   font-weight: bold;
   color: #000;
@@ -55,33 +58,17 @@
   appearance: none;
 }
 
-.form__input--textarea textarea {
-  padding: 10px;
-  width: 600px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  margin-left: 50px;
-
-  appearance: none;
-}
-
 .form__input--text input {
   height: 40px;
 }
 
-.form__input--textarea textarea {
-  height: 180px;
+.form__example {
+  color: #a9a9a9;
 }
 
 .form__input--text-1 {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.form__input--text-2 {
-  display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
 }
 
@@ -91,6 +78,12 @@
   height: 40px;
   border: 1px solid #ddd;
   border-radius: 3px;
+}
+
+.form__example-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .form__input--radio {
@@ -116,15 +109,24 @@
   margin-left: 10px;
 }
 
-.form__example {
-  color: #a9a9a9;
+.form__input--textarea textarea {
+  padding: 10px;
+  width: 600px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+
+  appearance: none;
+}
+
+.form__input--textarea textarea {
+  height: 180px;
 }
 
 .form__button {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
   margin-top: 30px;
+
 }
 
 .form__button-submit {

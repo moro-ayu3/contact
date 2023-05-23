@@ -9,9 +9,11 @@ use App\Models\Contact;
 
 class ContactController extends Controller
 {
-    public function index()
+    public function index(ContactRequest $request)
   {
-    return view('index');
+    $contacts = Contact::all();
+    $contact = $request->only(['fullname', 'gender','email', 'postcode', 'address', 'option']);
+    return view('index', compact('contact'));
   }
 
    public function confirm(ContactRequest $request)
@@ -25,6 +27,13 @@ class ContactController extends Controller
   {
     $contact = $request->only(['fullname', 'gender', 'email', 'postcode', 'address', 'option']);
     Contact::create($contact);
-    return view('thanks');
+    return view('thanks', compact('contacts'));
+  }
+
+  public function search(Request $request)
+  {
+    $contacts = Contact::all()->FullnameSearch($request->fullname)->GenderSearch($request->gender)->DateSearch($request->date)->EmailSearch($request->email)->get();
+
+    return view('search', compact('contacts'));
   }
 }

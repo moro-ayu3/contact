@@ -18,4 +18,32 @@ class Contact extends Model
          'adress',
          'option',
      ];
+
+    public function scopeFullnameSearch($query, $fullname)
+    {
+       if (!empty($fullname)) {
+       $query->where('fullname', $fullname);
+       }
+    }
+
+    public function scopeGenderSearch($query, $gender)
+    {
+        if(!empty($gender)) {
+        $query->where('gender', $gender);
+        }
+    }
+
+    public function scopeDateSearch($query, $date)
+    {
+        if(!empty($date)) {
+        $query->where('date', $date);
+        }
+    }
+
+    public function scopeEmailSearch($query, $email)
+    {
+        if(!empty($email)) {
+        $query->where('$email', $email);
+        }
+    }
 }
