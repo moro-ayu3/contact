@@ -17,7 +17,7 @@
         <h2>内容確認</h2>
       </div>
       <form class="form" action="/contacts" method="post">
-        @csrf
+        @method('PATCH')@csrf
         <div class="confirm-table">
           <table class="confirm-table__inner">
             <tr class="confirm-table__row">

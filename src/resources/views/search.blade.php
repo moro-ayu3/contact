@@ -16,61 +16,59 @@
       <div class="contact-form__heading">
         <h2>管理システム</h2>
       </div>
-      @foreach ($contacts as $contact)
-        <form class="form" action="/contacts/search" method="get">
-          @csrf
-          <div class="form__group">
-            <div class="form__group-title">
+      <form class="form" action="/contacts/search" method="get">
+        @csrf
+        <div class="form__group">
+          <div class="form__group-title">
             <h3 class="form__label--item">お名前</h3>
-            </div>
-            <div class="form__group-content">
-              <div class="form__input--text">
-                <input type="text" name="fullname" class="fullname" value="{{ old('fullname') }}" />
-              </div>
+          </div>
+          <div class="form__group-content">
+            <div class="form__input--text">
+              <input type="text" name="fullname" class="fullname" value="{{ old('fullname') }}" />
             </div>
           </div>
-          <div class="form__group">
-            <div class="form__group-title">
-              <h3 class="form__label--item">性別</h3>
-            </div>
-            <div class="form__group--content">
-              <div class="form__input--radio">
-                  <input type="radio" class="radio" id="0" name="gender" value="0" value="{{ old('like','gender') == 'all' ?'checked' : '' }}" /><label class="label__all">
-                  全て</label>
-                  <input type="radio" class="radio" id="1" name="gender" value="1" value="{{ old('gender') }}" /><label for="male" class="label__male">男性</label>
-                  <input type="radio" class="radio" id="2" name="gender" value="2" value="{{ old('gender') }}" /><label for="female" class="label__female">女性</label>
-                  <input type="hidden" name="id" value="id">
-              </div>
+        </div>
+        <div class="form__group">
+          <div class="form__group-title">
+            <h3 class="form__label--item">性別</h3>
+          </div>
+          <div class="form__group--content">
+            <div class="form__input--radio">
+                <input type="radio" class="radio" id="0" name="gender" value="0" value="{{ old('like','gender') == 'all' ?'checked' : '' }}" /><label class="label__all">
+                全て</label>
+                <input type="radio" class="radio" id="1" name="gender" value="1" value="{{ old('gender') }}" /><label for="male" class="label__male">男性</label>
+                <input type="radio" class="radio" id="2" name="gender" value="2" value="{{ old('gender') }}" /><label for="female" class="label__female">女性</label>
+                <input type="hidden" name="id" value="id">
             </div>
           </div>
-          <div class="form__group">
-            <div class="form__group-title">
-              <h3 class="form__label--item">登録日</h3>
-            </div>
-            <div class="form__group-content">
-              <div class="form__input--text">
-                <input type="date" name="date" value="{{ old('date') }}" />~<input type="date" name="date" value="{{ old('date') }}">
-              </div>
-            </div>
+        </div>
+        <div class="form__group">
+          <div class="form__group-title">
+            <h3 class="form__label--item">登録日</h3>
           </div>
-          <div class="form__group">
-            <div class="form__group-title">
-              <h3 class="form__label--item">メールアドレス</h3>
-            </div>
-            <div class="form__group-content">
-              <div class="form__input--text">
-                <input type="email" name="email" value="{{ old('email') }}" />
-              </div>
+          <div class="form__group-content">
+            <div class="form__input--text">
+              <input type="date" name="date" value="{{ old('date') }}" />~<input type="date" name="date" value="{{ old('date') }}">
             </div>
           </div>
-          <div class="form__button">
-            <button class="form__button-submit" type="submit" value="送信">検索</button>
+        </div>
+        <div class="form__group">
+          <div class="form__group-title">
+            <h3 class="form__label--item">メールアドレス</h3>
           </div>
-          <div class="form__return">
-            <a class="return" href="/contacts/search">リセット</a>
+          <div class="form__group-content">
+            <div class="form__input--text">
+              <input type="email" name="email" value="{{ old('email') }}" />
+            </div>
           </div>
-        </form>
-      @endforeach
+        </div>
+        <div class="form__button">
+          <button class="form__button-submit" type="submit" value="送信">検索</button>
+        </div>
+        <div class="form__return">
+          <a class="return" href="/contacts/search">リセット</a>
+        </div>
+      </form>
       <div class="form__database-check">
         <p class="data-1">全35件中 11~20件</p>
         <ol class="data-list">
@@ -81,6 +79,7 @@
           <li><input type="checkbox" name="checkbox" class="checkbox">4</li>
           <li><input type="checkbox" name="checkbox" class="checkbox">></li>
         </ol>
+        {{ $contacts->links() }}
       </div>
       <table>
         <tr class="form__database-list">
@@ -97,11 +96,13 @@
             <td class="form__database-content">{{ $contact['gender'] }}</td>
             <td class="form__database-content">{{ $contact['email'] }}</td>
             <td class="form__database-content">{{ $contact['option'] }}</td>
-            <div class="delete-form__button">
+            <form class="delete-form__button" action="/contacts/delete" method="post">
               <input type="hidden" name="id" value="{{ $contact['id'] }}">
               <button class="delete-form__button-submit" type="submit" value="送信">削除</button>
-            </div>
+            </form>
           @endforeach
+        </tr>
+      </table>
     </div>
   </main>
 </body>

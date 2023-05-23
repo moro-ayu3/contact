@@ -32,8 +32,15 @@ class ContactController extends Controller
 
   public function search(Request $request)
   {
-    $contacts = Contact::all()->FullnameSearch($request->fullname)->GenderSearch($request->gender)->DateSearch($request->date)->EmailSearch($request->email)->get();
+    $contacts = Contact::Paginate(4)->FullnameSearch($request->fullname)->GenderSearch($request->gender)->DateSearch($request->date)->EmailSearch($request->email)->get();
 
     return view('search', compact('contacts'));
+  }
+
+  public function delete(Request $request)
+  {
+    Contact::find($request->id)->delete();
+
+    return redirect('/contacts/search');
   }
 }
