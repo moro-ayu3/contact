@@ -31,8 +31,8 @@ class Contact extends Model
         $query->where('gender', $params['gender']);
         }
 
-        if(!empty($params['date'])) {
-        $query->where('date', $params['date']);
+        if(!empty($params['created_at'])) {
+        $query->where('created_at', $params['created_at']);
         }
 
         if(!empty($params['email'])) {

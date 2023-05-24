@@ -16,7 +16,7 @@
       <div class="contact-form__heading">
         <h2>管理システム</h2>
       </div>
-      <form class="form" action="/contacts/search" method="get">
+      <form class="form" action="/searches/search" method="get">
         @csrf
         <div class="form__group">
           <div class="form__group-title">
@@ -48,9 +48,8 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-              <input type="date" name="date" value="{{ old('date') }}"  value="{{ $params['date'] ?? null }}" />
-              {{ $contact->created_at }} ~<input type="date" name="date" value="{{ old('date') }}" value="{{ $params['date'] ?? null }}" />
-              {{ $contact->created_at }}
+                <input type="date" name="date" value="{{ old('created_at') }}"  value="{{ $params['created_at'] ?? null }}" />
+                ~<input type="date" name="date" value="{{ old('created_at') }}" value="{{ $params['created_at'] ?? null }}" />
             </div>
           </div>
         </div>
@@ -68,7 +67,7 @@
           <button class="form__button-submit" type="submit" value="送信">検索</button>
         </div>
         <div class="form__return">
-          <a class="return" href="/contacts/search">リセット</a>
+          <a class="return" href="/searches">リセット</a>
         </div>
       </form>
       <div class="form__database-check">
@@ -81,7 +80,6 @@
           <li><input type="checkbox" name="checkbox" class="checkbox">4</li>
           <li><input type="checkbox" name="checkbox" class="checkbox">></li>
         </ol>
-        {{ $contacts->links() }}
       </div>
       <table>
         <tr class="form__database-list">
@@ -111,8 +109,8 @@
            {{ session('message') }}
           </div>
         @endif
-        <div class="option__alert--over">
-          <a href="#" class="sample_link"></a>
+        <div class="option__alert--hover">
+          <p class="option_hover">{{ $contact['option'] }}</p>
         </div>
       </div>
     </div>

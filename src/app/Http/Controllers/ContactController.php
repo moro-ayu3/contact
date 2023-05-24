@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
+use Carbon\Carbon;
 
 
 class ContactController extends Controller
@@ -33,13 +34,14 @@ class ContactController extends Controller
   public function show()
   {
     $contacts = Contact::all();
-    return view('search');
+    return view('search',compact('contacts'));
   }
 
   public function search(Request $request)
   {
     $params = $request->query();
-    $contacts = Contact::Paginate(4)->Search($request->fullname)->Search($request->gender)->Search($request->date)->Search($request->email)->get();
+    $params['created_at'] = Carbon::createFromFormat('Y-m-d H:i:s', $contact->created_at)->format('Y-m-d');
+    $contacts = Contact::Paginate(4)->Search($request->$param['fullname'])->Search($request->$params['gender'])->Search($request->$param['created_at'])->Search($request->$params['email'])->get();
 
     return redirect('/searches',compact('contacts', 'params'))->with('message', '25文字以上の場合は...');
   }

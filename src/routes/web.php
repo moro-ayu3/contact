@@ -13,5 +13,5 @@ Route::get('/contacts/confirm', [ContactController::class, 'confirm']);
 Route::patch('/contacts', [ContactController::class, 'store']);
 Route::get('/contacts', [ContactController::class, 'store']);
 Route::get('/searches', [ContactController::class, 'show']);
-Route::get('/searches/search', [ContactController::class, 'search']);
+Route::post('/searches/search', [ContactController::class, 'search']);
 Route::post('/searches/delete', [ContactController::class, 'delete']);
