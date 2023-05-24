@@ -24,7 +24,7 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-              <input type="text" name="fullname" class="fullname" value="{{ old('fullname') }}" />
+              <input type="text" name="keyword" class="fullname" value="{{ $params['keyword'] ?? null }}" value="{{ old('fullname') }}" />
             </div>
           </div>
         </div>
@@ -34,10 +34,10 @@
           </div>
           <div class="form__group--content">
             <div class="form__input--radio">
-                <input type="radio" class="radio" id="0" name="gender" value="0" value="{{ old('like','gender') == 'all' ?'checked' : '' }}" /><label class="label__all">
+                <input type="radio" class="radio" id="0" name="gender" value="0" value="{{ old('like','gender') == 'all' ?'checked' : '' }}" value="{{ $params['gender'] ?? null }}" /><label class="label__all">
                 全て</label>
-                <input type="radio" class="radio" id="1" name="gender" value="1" value="{{ old('gender') }}" /><label for="male" class="label__male">男性</label>
-                <input type="radio" class="radio" id="2" name="gender" value="2" value="{{ old('gender') }}" /><label for="female" class="label__female">女性</label>
+                <input type="radio" class="radio" id="1" name="gender" value="1" value="{{ old('gender') }}" value="{{ $params['gender'] ?? null }}" /><label for="male" class="label__male">男性</label>
+                <input type="radio" class="radio" id="2" name="gender" value="2" value="{{ old('gender') }}" value="{{ $params['gender'] ?? null }}" /><label for="female" class="label__female">女性</label>
                 <input type="hidden" name="id" value="id">
             </div>
           </div>
@@ -48,7 +48,9 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-              <input type="date" name="date" value="{{ old('date') }}" />{{ $contact->created_at }}~<input type="date" name="date" value="{{ old('date') }}">{{ $contact->created_at }}
+              <input type="date" name="date" value="{{ old('date') }}"  value="{{ $params['date'] ?? null }}" />
+              {{ $contact->created_at }} ~<input type="date" name="date" value="{{ old('date') }}" value="{{ $params['date'] ?? null }}" />
+              {{ $contact->created_at }}
             </div>
           </div>
         </div>
@@ -58,7 +60,7 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-              <input type="email" name="email" value="{{ old('email') }}" />
+              <input type="email" name="email" value="{{ old('email') }}" value="{{ $params['email'] ?? null }}" />
             </div>
           </div>
         </div>

@@ -9,6 +9,11 @@
   text-align: center;
 }
 
+.thanks__comment {
+  font-size: 15px;
+  color: #000;
+}
+
 .form__button {
   margin-top: 30px;
   text-align: center;

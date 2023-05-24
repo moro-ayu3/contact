@@ -19,31 +19,28 @@ class Contact extends Model
          'option',
      ];
 
-    public function scopeFullnameSearch($query, $fullname)
+    public function scopeSearch(Builder $query, array $params): Builder
     {
-       if (!empty($fullname)) {
-       $query->where('fullname', $fullname);
-       }
-    }
-
-    public function scopeGenderSearch($query, $gender)
-    {
-        if(!empty($gender)) {
-        $query->where('gender', $gender);
+        if (!empty($param['keyword'])) {
+        $query->where(function ($query) use ($params) {
+            $query->where('fullname', 'like', '%', $params['keyword'] . '%');
+           });
+        }  
+    
+        if(!empty($params['gender'])) {
+        $query->where('gender', $params['gender']);
         }
-    }
 
-    public function scopeDateSearch($query, $date)
-    {
-        if(!empty($date)) {
-        $query->where('date', $date);
+        if(!empty($params['date'])) {
+        $query->where('date', $params['date']);
         }
-    }
 
-    public function scopeEmailSearch($query, $email)
-    {
-        if(!empty($email)) {
-        $query->where('$email', $email);
+        if(!empty($params['email'])) {
+        $query->where('email', $params['email']);
         }
+
+        return $query;
+        
     }
+ 
 }

@@ -30,8 +30,24 @@ class ContactController extends Controller
     return view('thanks', compact('contact'));
   }
 
-    public function show()
+  public function show()
   {
-     return view('thanks');
+    $contacts = Contact::all();
+    return view('search');
   }
+
+  public function search(Request $request)
+  {
+    $params = $request->query();
+    $contacts = Contact::Paginate(4)->Search($request->fullname)->Search($request->gender)->Search($request->date)->Search($request->email)->get();
+
+    return redirect('/searches',compact('contacts', 'params'))->with('message', '25文字以上の場合は...');
+  }
+
+  public function delete(Request $request)
+  {
+    Contact::find($request->id)->delete();
+
+    return redirect('/searches');
+  } 
 }
