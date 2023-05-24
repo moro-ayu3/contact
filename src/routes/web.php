@@ -8,9 +8,12 @@ Route::get('/', function () {
 });
 
 Route::get('/', [ContactController::class, 'index']);
-Route::get('/contacts/confirm', [ContactController::class, 'confirm']);
 Route::post('/contacts/confirm', [ContactController::class, 'confirm']);
-Route::get('/contacts', [ContactController::class, 'store']);
+Route::get('/contacts/confirm', [ContactController::class, 'confirm']);
 Route::patch('/contacts', [ContactController::class, 'store']);
-Route::get('/contacts/search', [ContactController::class, 'search']);
-Route::post('contacts/delete', [ContactController::class, 'delete']);
+Route::get('/contacts', [ContactController::class, 'store']);
+Route::get('/thanks', [ContactController::class,'show']);
+
+Route::get('/searches', [SearchController::class, 'index']);
+Route::get('/searches/search', [SearchController::class, 'search']);
+Route::post('/searches/delete', [SearchController::class, 'delete']);
