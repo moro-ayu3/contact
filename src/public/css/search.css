@@ -20,17 +20,11 @@
 }
 
 .form__group {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin-bottom: 15px;
   margin-right: 20px;
 }
 
 .form__group-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin-right: 30px;
 }
 
@@ -67,15 +61,9 @@
   border-radius: 3px;
 }
 
-.form__example-1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .form__input--radio {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
   align-items: center;
   position: relative;
   padding: 0 0 0 42px;
@@ -92,6 +80,7 @@
   margin: 0, auto;
 }
 
+.radio,
 .radio:before {
   position: absolute;
   content: "";
@@ -124,24 +113,11 @@ input[type=radio]:checked+.radio::before {
   margin-left: 10px;
 }
 
-.form__input--textarea textarea {
-  padding: 10px;
-  width: 600px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-
-  appearance: none;
-}
-
-.form__input--textarea textarea {
-  height: 180px;
-}
-
 .form__button {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   margin-top: 30px;
-
 }
 
 .form__button-submit {
@@ -155,4 +131,53 @@ input[type=radio]:checked+.radio::before {
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
+}
+
+.form__database-check {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkbox {
+  display: flex;
+  width: 20px;
+  height: 20px;
+}
+
+.form__database-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
+  padding: 15px;
+}
+
+.option:hover {
+  font-size: 15px;
+  color: #000;
+}
+
+.delete-form__button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.delete-form__button-submit {
+  padding: 10px;
+  width: 50px;
+  height: 30px;
+  border: none;
+  border-radius: 3px;
+  background: #000;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.option__alert-messege {
+  font-size: 15px;
+  color: #ff0000;
 }

@@ -31,25 +31,5 @@ class ContactController extends Controller
     return view('thanks', compact('contact'));
   }
 
-  public function show()
-  {
-    $contacts = Contact::all();
-    return view('search',compact('contacts'));
-  }
-
-  public function search(Request $request)
-  {
-    $params = $request->query();
-    $params['created_at'] = Carbon::createFromFormat('Y-m-d H:i:s', $contact->created_at)->format('Y-m-d');
-    $contacts = Contact::Paginate(4)->Search($request->$param['fullname'])->Search($request->$params['gender'])->Search($request->$param['created_at'])->Search($request->$params['email'])->get();
-
-    return redirect('/searches',compact('contacts', 'params'))->with('message', '25文字以上の場合は...');
-  }
-
-  public function delete(Request $request)
-  {
-    Contact::find($request->id)->delete();
-
-    return redirect('/searches');
-  } 
+  
 }

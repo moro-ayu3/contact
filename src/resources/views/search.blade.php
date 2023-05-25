@@ -16,7 +16,7 @@
       <div class="contact-form__heading">
         <h2>管理システム</h2>
       </div>
-      <form class="form" action="/searches/search" method="get">
+      <form class="form" action="/searches/search" method="post">
         @csrf
         <div class="form__group">
           <div class="form__group-title">
@@ -24,7 +24,7 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-              <input type="text" name="keyword" class="fullname" value="{{ $params['keyword'] ?? null }}" value="{{ old('fullname') }}" />
+              <input type="text" name="keyword" class="fullname" value="{{ old('keyword') }}" />
             </div>
           </div>
         </div>
@@ -34,11 +34,13 @@
           </div>
           <div class="form__group--content">
             <div class="form__input--radio">
-                <input type="radio" class="radio" id="0" name="gender" value="0" value="{{ old('like','gender') == 'all' ?'checked' : '' }}" value="{{ $params['gender'] ?? null }}" /><label class="label__all">
-                全て</label>
-                <input type="radio" class="radio" id="1" name="gender" value="1" value="{{ old('gender') }}" value="{{ $params['gender'] ?? null }}" /><label for="male" class="label__male">男性</label>
-                <input type="radio" class="radio" id="2" name="gender" value="2" value="{{ old('gender') }}" value="{{ $params['gender'] ?? null }}" /><label for="female" class="label__female">女性</label>
+              @foreach($form_data as $value)
+                <input type="radio" class="radio" id="0" name="{{ $value[1] }}" value="{{ $value[2] }}" value="{{ old('like','$value[1]') == $value[2] ? 'checked' : '' }}"checked/><label class="label__all">
+                全て{{ $value[0] }}</label>
+                <input type="radio" class="radio" id="1" name="{{ $value[1] }}" value="{{ $value[2] }}" value="{{ old('$value[1]') == $value[2] ? 'checked' : '' }}" /><label for="male" class="label__male">男性{{ $value[0] }}</label>
+                <input type="radio" class="radio" id="2" name="{{ $value[1] }}" value="2" value="{{ old('$value[1]') == $value[2] ? 'checked' : ''}}"/><label for="female" class="label__female">女性{{ $value[0] }}</label>
                 <input type="hidden" name="id" value="id">
+              @endforeach
             </div>
           </div>
         </div>
@@ -48,8 +50,8 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-                <input type="date" name="date" value="{{ old('created_at') }}"  value="{{ $params['created_at'] ?? null }}" />
-                ~<input type="date" name="date" value="{{ old('created_at') }}" value="{{ $params['created_at'] ?? null }}" />
+                <input type="date" name="date" value="{{ old('created_at')->format('Y/m/d H:i:s') ?? null }}" />
+                ~<input type="date" name="date" value="{{ old('created_at')->format('Y/m/d H:i:s') ?? null }}" />
             </div>
           </div>
         </div>
@@ -59,7 +61,7 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-              <input type="email" name="email" value="{{ old('email') }}" value="{{ $params['email'] ?? null }}" />
+              <input type="email" name="keyword" value="{{ old('keyword') }}" class="email" />
             </div>
           </div>
         </div>
@@ -72,14 +74,14 @@
       </form>
       <div class="form__database-check">
         <p class="data-1">全35件中 11~20件</p>
-        <ol class="data-list">
-          <li><input type="checkbox" name="checkbox" class="checkbox"><</li>
-          <li><input type="checkbox" name="checkbox" class="checkbox">1</li>
-          <li><input type="checkbox" name="checkbox" class="checkbox">2</li>
-          <li><input type="checkbox" name="checkbox" class="checkbox">3</li>
-          <li><input type="checkbox" name="checkbox" class="checkbox">4</li>
-          <li><input type="checkbox" name="checkbox" class="checkbox">></li>
-        </ol>
+        <ul class="data-list">
+          <li><input type="checkbox" name="<" class="checkbox"></li>
+          <li><input type="checkbox" name="1" class="checkbox"></li>
+          <li><input type="checkbox" name="2" class="checkbox"></li>
+          <li><input type="checkbox" name="3" class="checkbox"></li>
+          <li><input type="checkbox" name="4" class="checkbox"></li>
+          <li><input type="checkbox" name=">" class="checkbox"></li>
+        </ul>
       </div>
       <table>
         <tr class="form__database-list">
@@ -93,10 +95,12 @@
           @foreach ($contacts as $contact)
             <td class="form__database-content">{{ $contact['id'] }}</td>
             <td class="form__database-content">{{ $contact['fullname'] }}</td>
-            <td class="form__database-content">{{ $contact['gender'] }}</td>
+            <td class="form__database-content">{{ $contact['gender'] }}{{ $value->gender }}</td>
             <td class="form__database-content">{{ $contact['email'] }}</td>
             <td class="form__database-content">{{ $contact['option'] }}</td>
-            <form class="delete-form__button" action="/contacts/delete" method="post">
+             <p class="option:hover">{{ $contact['option'] }}</p>
+            {{ $contacts->links() }}
+            <form class="delete-form__button" action="/searches/delete" method="post">
               <input type="hidden" name="id" value="{{ $contact['id'] }}">
               <button class="delete-form__button-submit" type="submit" value="送信">削除</button>
             </form>
@@ -109,9 +113,6 @@
            {{ session('message') }}
           </div>
         @endif
-        <div class="option__alert--hover">
-          <p class="option_hover">{{ $contact['option'] }}</p>
-        </div>
       </div>
     </div>
   </main>

@@ -48,7 +48,7 @@
           </div>
           <div class="form__group--content">
             <div class="form__input--radio">
-                <input type="radio" class="radio" id="1" name="gender" value="1" value="{{ old('like','gender', $contact->gender) == 'male' ? 'checked' : '' }}" /><label for="male" class="label__male">男性</label>
+                <input type="radio" class="radio" id="1" name="gender" value="1" value="{{ old('like','gender', $contact->gender) == 'male' ? 'checked' : '' }}"checked /><label for="male" class="label__male">男性</label>
                 <input type="radio" class="radio" id="2" name="gender" value="2" value="{{ old('gender', $contact->gender) }}" /><label for="female" class="label__female">女性</label>
                 <input type="hidden" name="id" value="id">
             </div>
