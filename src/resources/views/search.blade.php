@@ -91,21 +91,19 @@
           <th class="form__database-title">メールアドレス</th>
           <th class="form__database-title">ご意見</th>
         </tr>
-        @foreach ($contacts as $contact)
         <tr class="form__database-list">
-            <td class="form__database-content">{{ $contact['id'] }}</td>
-            <td class="form__database-content">{{ $contact['fullname'] }}</td>
-            <td class="form__database-content">{{ $contact['gender'] }}{{ $value->gender }}</td>
-            <td class="form__database-content">{{ $contact['email'] }}</td>
-            <td class="form__database-content">{{ $contact['option'] }}</td>
-             <p class="option:hover">{{ $contact['option'] }}</p>
-            {{ $contacts->links() }}
+            <td class="form__database-content">{{ $search['id'] }}</td>
+            <td class="form__database-content">{{ $search['fullname'] }}</td>
+            <td class="form__database-content">{{ $search['gender'] }}{{ $value->gender }}</td>
+            <td class="form__database-content">{{ $search['email'] }}</td>
+            <td class="form__database-content">{{ $search['option'] }}</td>
+             <p class="option:hover">{{ $search['option'] }}</p>
+            {{ $searches->links() }}
             <form class="delete-form__button" action="/searches/delete" method="post">
-              <input type="hidden" name="id" value="{{ $contact['id'] }}">
+              <input type="hidden" name="id" value="{{ $search['id'] }}">
               <button class="delete-form__button-submit" type="submit" value="送信">削除</button>
             </form>
         </tr>
-        @endforeach
       </table>
       <div class="option__alert">
         @if(session('message'))

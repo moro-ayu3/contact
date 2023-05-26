@@ -87,6 +87,11 @@
   color: #a9a9a9;
 }
 
+.form__error {
+  font-size: 15px;
+  color: #ff0000;
+}
+
 .form__input--text-1 {
   display: flex;
   justify-content: center;

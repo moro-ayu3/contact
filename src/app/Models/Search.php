@@ -16,4 +16,5 @@ class Search extends Model
          'option',
      ];
 
+    
 }

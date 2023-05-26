@@ -22,7 +22,7 @@
         <div class="form__group">
           <div class="form__group-title">
             <h3 class="form__label--item">お名前</h3>
-            <span class="form__label--required">※</span>
+            <label class="form__label--required">※</label>
           </div>
           <div class="form__group-content">
            <div class="form__input">
@@ -48,7 +48,7 @@
         <div class="form__group">
           <div class="form__group-title">
             <h3 class="form__label--item">性別</h3>
-            <span class ="form__label--required">※</span>
+            <label class ="form__label--required">※</label>
           </div>
           <div class="form__group--content">
             <div class="form__input--radio">
@@ -58,17 +58,12 @@
                 <label for="female" class="label__female">女性</label>
                 <input type="hidden" name="id" value="id">
             </div>
-            <div class="form__error">
-              @error('gender')
-              {{ $message }}
-              @enderror
-            </div>
           </div>
         </div>
         <div class="form__group">
           <div class="form__group-title">
             <h3 class="form__label--item">メールアドレス</h3>
-            <span class="form__label--required">※</span>
+            <label class="form__label--required">※</label>
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
@@ -85,7 +80,7 @@
         <div class="form__group">
           <div class="form__group-title">
             <h3 class="form__label--item">郵便番号</h3>
-            <span class="form__label--required">※</span>
+            <label class="form__label--required">※</label>
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
@@ -102,7 +97,7 @@
         <div class="form__group">
           <div class="form__group-title">
             <h3 class="form__label--item">住所</h3>
-            <span class="form__label--required">※</span>
+            <label class="form__label--required">※</label>
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
@@ -130,7 +125,7 @@
         <div class="form__group">
           <div class="form__group-title">
             <h3 class="form__label--item">ご意見</h3>
-            <span class="form__label--required">※</span>
+            <label class="form__label--required">※</label>
           </div>
           <div class="form__group-content">
             <div class="form__input--textarea">

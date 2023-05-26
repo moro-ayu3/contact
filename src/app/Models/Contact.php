@@ -19,28 +19,9 @@ class Contact extends Model
          'option',
      ];
 
-    public function scopeSearch(Builder $query, array $params): Builder
+    public function search()
     {
-        if (!empty($contact->$params['keyword'])) {
-        $query->where(function ($query) use ($params) {
-            $query->where('fullname', 'like', '%', $params['keyword'] . '%');
-           });
-        }  
-    
-        if(!empty($contact->$params['gender'])) {
-        $query->where('gender', $params['gender']);
-        }
-
-        if(!empty($contact->$params['created_at'])) {
-        $query->where('created_at', $params['created_at']);
-        }
-
-        if(!empty($contact->$params['email'])) {
-        $query->where('email', $params['email']);
-        }
-
-        return $query;
-        
+       return $this->belongsTo(Search::class);
     }
  
 }
