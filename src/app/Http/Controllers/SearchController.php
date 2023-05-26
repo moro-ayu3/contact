@@ -4,17 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Carbon\Carbon;
+use App\Http\Controllers\ContactController;
 
 class SearchController extends Controller
 {
    public $form_data = [
+      ['お名前', 'text[fullname]', 'fullname'],
       ['性別', 'radio[gender]', 'gender'],
+      ['日付', 'date[date]', 'date'],
+      ['メールアドレス', 'email[email]', 'email'],
    ];
 
 
-  public function show()
+  public function show(Request $request)
   {
-    return view('search', ['form_data' => $this->form_data]);
+    $contacts = Contact::all();
+    return view('search', ['form_data' => $this->form_data],);
   }
 
   public function search(Request $request)
@@ -39,14 +45,20 @@ class SearchController extends Controller
     $contact_data = DB::table('contacts');
 
     if(in_array('gender', $radio_array)){
-      $contact_data->where('gender', $gender);
+      $contact_data->where('gender', $value);
     }
 
     $result = $contact_data->get();
 
+    $contact = $request->only(['fullname', 'gender','email', 'created_at']);
+
+    $date = DB::table('contacts');
+    $date = Carbon::createFromFormat('Y-m-d H:i:s', $contact->created_at)->format('Y-m-d');
+
+
     $contacts = Contact::Paginate(4);
 
-    return view('/searches/serach', ['search_data' => $result,], compact('contacts'));
+    return view('/searches', ['search_data' => $result,], compact('contacts'));
   }
 
   public function delete(Request $request)

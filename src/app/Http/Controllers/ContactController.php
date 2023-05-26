@@ -2,22 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
-use Carbon\Carbon;
-
 
 class ContactController extends Controller
 {
-    public function index(ContactRequest $request)
-  {
-    $contacts = Contact::all();
-    $contact = $request->only(['fullname', 'gender','email', 'postcode', 'address', 'option']);
-    return view('index', compact('contact'));
-  }
+   public function index()
+   {
+      return view('index');
+   }
 
-    public function confirm(ContactRequest $request)
+   public function confirm(ContactRequest $request)
   {
     $contact = $request->only(['fullname', 'gender','email', 'postcode', 'address', 'option']);
     Contact::find($request->id)->confirm($contact);
@@ -29,7 +24,5 @@ class ContactController extends Controller
     $contact = $request->only(['fullname', 'gender', 'email', 'postcode', 'address', 'option']);
     Contact::create($contact);
     return view('thanks', compact('contact'));
-  }
-
-  
+  } 
 }

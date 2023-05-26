@@ -50,8 +50,8 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-                <input type="date" name="date" value="{{ old('created_at')->format('Y/m/d H:i:s') ?? null }}" />
-                ~<input type="date" name="date" value="{{ old('created_at')->format('Y/m/d H:i:s') ?? null }}" />
+                <input type="date" name="date" value="{{ old('$date') }}" />
+                ~<input type="date" name="date" value="{{ old('$date') }}" />
             </div>
           </div>
         </div>
@@ -91,8 +91,8 @@
           <th class="form__database-title">メールアドレス</th>
           <th class="form__database-title">ご意見</th>
         </tr>
+        @foreach ($contacts as $contact)
         <tr class="form__database-list">
-          @foreach ($contacts as $contact)
             <td class="form__database-content">{{ $contact['id'] }}</td>
             <td class="form__database-content">{{ $contact['fullname'] }}</td>
             <td class="form__database-content">{{ $contact['gender'] }}{{ $value->gender }}</td>
@@ -104,8 +104,8 @@
               <input type="hidden" name="id" value="{{ $contact['id'] }}">
               <button class="delete-form__button-submit" type="submit" value="送信">削除</button>
             </form>
-          @endforeach
         </tr>
+        @endforeach
       </table>
       <div class="option__alert">
         @if(session('message'))

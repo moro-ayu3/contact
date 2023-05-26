@@ -25,6 +25,7 @@
             <span class="form__label--required">※</span>
           </div>
           <div class="form__group-content">
+           <div class="form__input">
             <div class="form__input--text">
               <input type="text" name="fullname" class="fullname" value="{{ old('fullname', $contact->fullname) }}" />
             </div>
@@ -32,6 +33,7 @@
               <input type="text" name="fullname" class="fullname" value="{{ old
                 ('fullname', $contact->fullname) }}" />
             </div>
+           </div>
             <p class="form__example">例）山田</p>
             <p class="form__example-1">例）太郎</p>
             <div class="form__error">
