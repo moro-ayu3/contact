@@ -19,29 +19,29 @@ class SearchController extends Controller
 
   public function show(Request $request)
   {
-    return view('search', ['form_data' => $this->form_data],);
+    $searches = Search::with('contact')->get();
+    return view('search', ['form_data' => $this->form_data],compact('searches'));
   }
 
   public function search(Request $request)
   {
-    $query = self::query();
+    $contact_data = Search::with('contact');
 
     if (!empty($keyword)) {
-    $query->where('fullname', 'like', '%' . $keyword . '%');
+    $contact_data->where('fullname', 'like', '%' . $keyword . '%');
     }
 
     if (!empty($keyword)) {
-    $query->where('email', 'like', '%' . $keyword . '%');
+    $contact_data->where('email', 'like', '%' . $keyword . '%');
     }
-
-    $result = $query->get();
 
     $radio_array = [];
     foreach ($request->input('radio') as $value){
       $radio_array[] = $value;
     }
-
-    $contact_data = Search::table('searches');
+    dd($value);
+    // $valueの値をsearch.blade.phpに受け渡す//
+  
 
     if(in_array('gender', $radio_array)){
       $contact_data->where('gender', $value);
@@ -51,7 +51,7 @@ class SearchController extends Controller
 
     $search = $request->only(['fullname', 'gender','email', 'created_at']);
 
-    $date = Search::table('searches');
+    $date = Search::with('contact');
     $date = Carbon::createFromFormat('Y-m-d H:i:s', $search->created_at)->format('Y-m-d');
 
 

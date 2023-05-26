@@ -13,5 +13,5 @@ Route::post('/contacts/confirm', [ContactController::class, 'confirm'])->name('c
 Route::post('/contacts', [ContactController::class, 'store'])->name('contact.store');
 
 Route::get('/searches', [SearchController::class, 'show'])->name('search.show');
-Route::post('/searches/search', [SearchController::class, 'search'])->name('search.search');
+Route::get('/searches/search', [SearchController::class, 'search'])->name('search.search');
 Route::post('/searches/delete', [SearchController::class, 'delete'])->name('search.delete');

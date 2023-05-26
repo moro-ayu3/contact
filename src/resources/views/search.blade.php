@@ -16,7 +16,7 @@
       <div class="contact-form__heading">
         <h2>管理システム</h2>
       </div>
-      <form class="form" action="/searches/search" method="post">
+      <form class="form" action="/searches/search" method="get">
         @csrf
         <div class="form__group">
           <div class="form__group-title">
@@ -35,10 +35,10 @@
           <div class="form__group--content">
             <div class="form__input--radio">
               @foreach($form_data as $value)
-                <input type="radio" class="radio" id="0" name="{{ $value[1] }}" value="{{ $value[2] }}" value="{{ old('like','$value[1]') == $value[2] ? 'checked' : '' }}"checked/><label class="label__all">
-                全て{{ $value[0] }}</label>
-                <input type="radio" class="radio" id="1" name="{{ $value[1] }}" value="{{ $value[2] }}" value="{{ old('$value[1]') == $value[2] ? 'checked' : '' }}" /><label for="male" class="label__male">男性{{ $value[0] }}</label>
-                <input type="radio" class="radio" id="2" name="{{ $value[1] }}" value="2" value="{{ old('$value[1]') == $value[2] ? 'checked' : ''}}"/><label for="female" class="label__female">女性{{ $value[0] }}</label>
+                <input type="radio" class="radio" id="0" name="{{ $value[1][2] }}" value="0" value="{{ old('$value[1][2]') }}"checked/><label class="label__all">
+                全て</label>
+                <input type="radio" class="radio" id="1" name="{{ $value[1] }}" value="1" value="{{ old('$value[1]') }}" /><label for="male" class="label__male">男性</label>
+                <input type="radio" class="radio" id="2" name="{{ $value[2] }}" value="2" value="{{ old('$value[2]') }}"/><label for="female" class="label__female">女性</label>
                 <input type="hidden" name="id" value="id">
               @endforeach
             </div>
@@ -92,17 +92,20 @@
           <th class="form__database-title">ご意見</th>
         </tr>
         <tr class="form__database-list">
-            <td class="form__database-content">{{ $search['id'] }}</td>
-            <td class="form__database-content">{{ $search['fullname'] }}</td>
-            <td class="form__database-content">{{ $search['gender'] }}{{ $value->gender }}</td>
-            <td class="form__database-content">{{ $search['email'] }}</td>
-            <td class="form__database-content">{{ $search['option'] }}</td>
-             <p class="option:hover">{{ $search['option'] }}</p>
-            {{ $searches->links() }}
-            <form class="delete-form__button" action="/searches/delete" method="post">
-              <input type="hidden" name="id" value="{{ $search['id'] }}">
-              <button class="delete-form__button-submit" type="submit" value="送信">削除</button>
-            </form>
+          @foreach($searches as $search)
+            <td class="form__database-content">
+              <p class="form__database-content-p">{{ $search['contact']['id'] }}{{ $search['contact']['fullname'] }}{{ $search['contact']['gender'] }}{{ $value->gender }}{{ $search['contact']['email'] }}{{ $search['contact']['option'] }}</p></td>
+            <td class="form__database-content">
+             <p class="option:hover">{{ $search['contact']['option'] }}</p>
+            </td>
+            <td class="form__database-content">
+              <form class="delete-form__button" action="/searches/delete" method="post">
+                <input type="hidden" name="id" value="{{ $search['id'] }}">
+                <button class="delete-form__button-submit" type="submit" value="送信">削除</button>
+              </form>
+            </td>
+            {{ $searches->links()}}
+          @endforeach
         </tr>
       </table>
       <div class="option__alert">

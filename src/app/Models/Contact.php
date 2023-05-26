@@ -23,5 +23,4 @@ class Contact extends Model
     {
        return $this->belongsTo(Search::class);
     }
- 
 }
