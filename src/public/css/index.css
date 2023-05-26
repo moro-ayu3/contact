@@ -12,16 +12,11 @@
 .form {
   margin: 0 auto;
   width: 70%;
-  text-align: center;
-  border-top: solid 1px #000;
-  border-right: solid 1px #000;
-  border-bottom: solid 1px #000;
-  border-left: solid 1px #000;
 }
 
 .form__group {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 15px;
   margin-right: 20px;
@@ -50,6 +45,7 @@
 }
 
 .form__input {
+  margin-top: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,7 +64,26 @@
   height: 40px;
 }
 
+.example {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .form__example {
+  display: flex;
+  color: #a9a9a9;
+}
+
+.form__example-1 {
+  display: flex;
+  flex-direction: row;
+  margin-right: 100px;
+  color: #a9a9a9;
+}
+
+.form__example-2 {
+  display: flex;
   color: #a9a9a9;
 }
 
@@ -76,6 +91,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 10px;
 }
 
 .fullname {
@@ -84,12 +100,6 @@
   height: 40px;
   border: 1px solid #ddd;
   border-radius: 3px;
-}
-
-.form__example-1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .form__input--radio {
@@ -107,7 +117,6 @@
   height: 50px;
   border: 1px solid #ddd;
   border-radius: 50%;
-  opacity: 0;
   margin: 0, auto;
 }
 
@@ -157,8 +166,7 @@ input[type=radio]:checked+.radio::before {
 }
 
 .form__button {
-  display: flex;
-  flex-wrap: wrap;
+  display: block;
   margin-top: 30px;
 
 }

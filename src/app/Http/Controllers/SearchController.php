@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Carbon\Carbon;
-use App\Http\Controllers\ContactController;
+
 
 class SearchController extends Controller
 {
@@ -19,7 +19,7 @@ class SearchController extends Controller
 
   public function show(Request $request)
   {
-    $contacts = Contact::all();
+    $contacts = Contact::with($form_data);
     return view('search', ['form_data' => $this->form_data],);
   }
 
