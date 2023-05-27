@@ -17,20 +17,22 @@
         <h2>内容確認</h2>
       </div>
       <form class="form" action="/contacts" method="post">
-        @method('PATCH')@csrf
+        @csrf
         <div class="confirm-table">
           <table class="confirm-table__inner">
             <tr class="confirm-table__row">
               <th class="confirm-table__header">お名前</th>
               <td class="confirm-table__text">
-                <input type="text" name="fullname" value="{{ $contact['fullname'] }}" readonly />
+                <div class="confirm__fullname">
+                  <input type="text" name="fullname" value="{{ $contact['fullname'] }}" readonly />
+                  <input type="text" name="fullname" value="{{ $contact['fullname'] }}" readonly />
+                </div>
               </td>
             </tr>
             <tr class="confirm-table__row">
               <th class="confirm-table__header">性別</th>
               <td class="confirm-table__text">
-                <input type="text" name="gender"  value="{{ $contact['gender'] }}" readonly />
-                <input type="hidden" name="id" value="{{ $contact['id'] }}" readonly /> 
+                <input type="text" name="gender"  value="{{ $contact['gender'] }}" readonly /> 
               </td>
             </tr>
             <tr class="confirm-table__row">
@@ -54,7 +56,7 @@
             <tr class="confirm-table__row">
               <th class="confirm-table__header">建物名</th>
               <td class="confirm-table__text">
-                <input type="text" name="building_name" />
+                <input type="text" name="building_name" value="" />
               </td>
             </tr>
             <tr class="confirm-table__row">

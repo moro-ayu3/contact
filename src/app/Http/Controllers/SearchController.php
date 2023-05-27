@@ -34,16 +34,8 @@ class SearchController extends Controller
     if (!empty($keyword)) {
     $contact_data->where('email', 'like', '%' . $keyword . '%');
     }
-
-    $radio_array = [];
-    foreach ($request->input('radio') as $value){
-      $radio_array[] = $value;
-    }
-    dd($value);
-    // $valueの値をsearch.blade.phpに受け渡す//
-  
-
-    if(in_array('gender', $radio_array)){
+    
+    if(!empty($value)){
       $contact_data->where('gender', $value);
     }
 
@@ -52,10 +44,11 @@ class SearchController extends Controller
     $search = $request->only(['fullname', 'gender','email', 'created_at']);
 
     $date = Search::with('contact');
-    $date = Carbon::createFromFormat('Y-m-d H:i:s', $search->created_at)->format('Y-m-d');
+    $date = Carbon::createFromFormat('Y-m-d H:i:s')->format('Y-m-d');
 
 
     $searches = Search::Paginate(4);
+
 
     return view('/searches', ['search_data' => $result,], compact('searches'));
   }

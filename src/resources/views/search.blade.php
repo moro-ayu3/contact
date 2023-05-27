@@ -34,13 +34,10 @@
           </div>
           <div class="form__group--content">
             <div class="form__input--radio">
-              @foreach($form_data as $value)
-                <input type="radio" class="radio" id="0" name="{{ $value[1][2] }}" value="0" value="{{ old('$value[1][2]') }}"checked/><label class="label__all">
+                <input type="radio" class="gender" id="0" name="value" value="全て" value="{{ old('value') }}"checked/><label class="label__all">
                 全て</label>
-                <input type="radio" class="radio" id="1" name="{{ $value[1] }}" value="1" value="{{ old('$value[1]') }}" /><label for="male" class="label__male">男性</label>
-                <input type="radio" class="radio" id="2" name="{{ $value[2] }}" value="2" value="{{ old('$value[2]') }}"/><label for="female" class="label__female">女性</label>
-                <input type="hidden" name="id" value="id">
-              @endforeach
+                <input type="radio" class="gender" id="1" name="value" value="男性" value="{{ old('value') }}" /><label for="male" class="label__male">男性</label>
+                <input type="radio" class="gender" id="2" name="value" value="女性" value="{{ old('value') }}"/><label for="female" class="label__female">女性</label>
             </div>
           </div>
         </div>
@@ -74,14 +71,20 @@
       </form>
       <div class="form__database-check">
         <p class="data-1">全35件中 11~20件</p>
-        <ul class="data-list">
-          <li><input type="checkbox" name="<" class="checkbox"></li>
-          <li><input type="checkbox" name="1" class="checkbox"></li>
-          <li><input type="checkbox" name="2" class="checkbox"></li>
-          <li><input type="checkbox" name="3" class="checkbox"></li>
-          <li><input type="checkbox" name="4" class="checkbox"></li>
-          <li><input type="checkbox" name=">" class="checkbox"></li>
-        </ul>
+        <nav class="pagination">
+          <a href="" class="pagination__prev">
+            <span class="visuallyhidden">Previous Page</span>
+          </a>
+          <ul class="pagination__items">
+            <li class="is-active"><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+          </ul>
+          <a href="" class="pagination__next">
+            <span class="visuallyhidden">Next Page</span>
+          </a>
+        </nav>
       </div>
       <table>
         <tr class="form__database-list">

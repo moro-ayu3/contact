@@ -14,6 +14,6 @@ class SearchesSeeder extends Seeder
      */
     public function run()
     {
-        Search::factory()->count(7)->create();
+        Search::factory()->count(4)->create();
     }
 }

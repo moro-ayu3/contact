@@ -56,7 +56,6 @@
                 <label for="male" class="label__male">男性</label>
                 <input type="radio" class="radio" id="2" name="gender" value="2" value="{{ old('gender') }}" />
                 <label for="female" class="label__female">女性</label>
-                <input type="hidden" name="id" value="id">
             </div>
           </div>
         </div>
@@ -101,7 +100,7 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-              <input type="text" name="address" required autocomplete="text" size="60" value="{{ old('address') }}" />
+              <input type="text" name="address" size="60" value="{{ old('address') }}" />
             </div>
             <p class="form__example">例）東京都渋谷区千駄ヶ谷1-2-3</p>
             <div class="form__error">

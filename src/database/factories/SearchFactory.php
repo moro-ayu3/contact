@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Search;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class SearchFactory extends Factory
