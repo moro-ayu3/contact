@@ -34,10 +34,9 @@
           </div>
           <div class="form__group--content">
             <div class="form__input--radio">
-                <input type="radio" class="gender" id="0" name="value" value="全て" value="{{ old('value') }}"checked/><label class="label__all">
-                全て</label>
-                <input type="radio" class="gender" id="1" name="value" value="男性" value="{{ old('value') }}" /><label for="male" class="label__male">男性</label>
-                <input type="radio" class="gender" id="2" name="value" value="女性" value="{{ old('value') }}"/><label for="female" class="label__female">女性</label>
+                <label class="label__all"><input type="radio" class="gender" id="0" name="value" value="全て" value="{{ old('value') }}"checked/>全て</label>
+                <label for="male" class="label__male"><input type="radio" class="gender" id="1" name="value" value="男性" value="{{ old('value') }}" />男性</label>
+                <label for="female" class="label__female"><input type="radio" class="gender" id="2" name="value" value="女性" value="{{ old('value') }}"/>女性</label>
             </div>
           </div>
         </div>

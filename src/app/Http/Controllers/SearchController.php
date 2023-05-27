@@ -41,16 +41,14 @@ class SearchController extends Controller
 
     $result = $contact_data->get();
 
-    $search = $request->only(['fullname', 'gender','email', 'created_at']);
+    $search = $request->only(['fullname', 'gender','email', 'option']);
 
     $date = Search::with('contact');
-    $date = Carbon::createFromFormat('Y-m-d H:i:s')->format('Y-m-d');
-
-
+    
     $searches = Search::Paginate(4);
 
 
-    return view('/searches', ['search_data' => $result,], compact('searches'));
+    return redirect('/searches', ['search_data' => $result,], compact('searches', 'search'));
   }
 
   public function delete(Request $request)
