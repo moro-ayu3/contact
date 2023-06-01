@@ -27,12 +27,13 @@
           <div class="form__group-content">
            <div class="form__input">
             <div class="form__input--text">
-              <input type="text" name="fullname" class="fullname" value="{{ old('fullname') }}" />
+              <input type="text" name="last_name" class="fullname" value="{{ old('fullname') }}" />
             </div>
             <div class="form__input--text-1">
-              <input type="text" name="fullname" class="fullname" value="{{ old
+              <input type="text" name="first_name" class="fullname" value="{{ old
                 ('fullname') }}" />
             </div>
+            {{ $contact->last_name . $contact->first_name }}
            </div>
            <div class="example">
             <p class="form__example-1">例）山田</p>

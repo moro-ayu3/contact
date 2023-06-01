@@ -7,9 +7,11 @@ use App\Models\Contact;
 
 class ContactController extends Controller
 {
-   public function index()
+   public function index(ContactRequest $request)
    {
-      return view('index');
+      $contact = $request->only(['fullname', 'gender','email', 'postcode', 'address', 'building_name', 'option']);
+
+      return view('index', compact('contact'));
    }
 
    public function confirm(ContactRequest $request)

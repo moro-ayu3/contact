@@ -44,8 +44,8 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-                <input type="date" name="date" value="{{ old('$date') }}" />
-                ~<input type="date" name="date" value="{{ old('$date') }}" />
+                <input type="date" name="date" class="created_at" value="{{ old('$date') }}" />
+                ~<input type="date" name="date" class="created_at" value="{{ old('$date') }}" />
             </div>
           </div>
         </div>
