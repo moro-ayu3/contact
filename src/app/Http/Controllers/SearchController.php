@@ -20,6 +20,7 @@ class SearchController extends Controller
   public function show(Request $request)
   {
     $searches = Search::with('contact')->get();
+    
     return view('search', ['form_data' => $this->form_data],compact('searches'));
   }
 
@@ -42,8 +43,10 @@ class SearchController extends Controller
     $result = $contact_data->get();
 
     $search = $request->only(['fullname', 'gender','email', 'option']);
+    
 
     $date = Search::with('contact');
+    
     
     $searches = Search::Paginate(4);
 

@@ -16,16 +16,19 @@
 
 .confirm-table__inner {
   width: 100%;
+  border: none;
 }
 
 .confirm-table__header {
   padding: 15px;
   width: 20%;
   font-weight: bold;
+  border: none;
 }
 
 .confirm-table__text {
   padding: 15px;
+  border: none;
 }
 
 .confirm-table__text input {
