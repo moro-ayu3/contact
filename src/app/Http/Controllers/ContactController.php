@@ -7,11 +7,9 @@ use App\Models\Contact;
 
 class ContactController extends Controller
 {
-   public function index(ContactRequest $request)
+   public function index()
    {
-      $contact = $request->only(['fullname', 'gender','email', 'postcode', 'address', 'building_name', 'option']);
-
-      return view('index', compact('contact'));
+      return view('index');
    }
 
    public function confirm(ContactRequest $request)
@@ -27,4 +25,26 @@ class ContactController extends Controller
     Contact::create($contact);
     return view('thanks');
   } 
+
+  public function show()
+  {
+    $contacts = [];
+    return view('search');
+  }
+
+  public function search(Request $request)
+  {
+    
+    $contacts = Contact::Paginate(4)->$contact_data->get();
+
+    return redirect('/searches', compact('contacts'));
+  }
+
+  public function delete(Request $request)
+  {
+    Contact::find($request->id)->delete();
+
+    return redirect('/searches');
+  } 
 }
+

@@ -15,6 +15,5 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
       Contact::factory(35)->create();
-      Search::factory(35)->create();
     }
 }

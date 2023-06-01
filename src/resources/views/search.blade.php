@@ -24,7 +24,7 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-              <input type="text" name="keyword" class="fullname" value="{{ old('keyword') }}" />
+              <input type="text" name="keyword" class="fullname" value="{{ $contact['fullname'] }}" />
             </div>
           </div>
         </div>
@@ -34,7 +34,7 @@
           </div>
           <div class="form__group--content">
             <div class="form__input--radio">
-                <label class="label__all"><input type="radio" class="gender" id="0" name="value" value="全て" value="{{ old('value') }}"checked/>全て</label><label class="label__male"><input type="radio" class="gender" id="1" name="value" value="男性" value="{{ old('value') }}" />男性</label><label class="label__female"><input type="radio" class="gender" id="2" name="value" value="女性" value="{{ old('value') }}"/>女性</label>
+                <label class="label__all"><input type="radio" class="gender" id="0" name="value" value="全て" value="{{ $contact['gender'] }}"checked/>全て</label><label class="label__male"><input type="radio" class="gender" id="1" name="value" value="男性" value="{{ $contact['gender'] }}" />男性</label><label class="label__female"><input type="radio" class="gender" id="2" name="value" value="女性" value="{{ $contact['gender'] }}"/>女性</label>
             </div>
           </div>
         </div>
@@ -44,8 +44,8 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-                <input type="date" name="date" class="created_at" value="{{ old('$date') }}" />
-                ~<input type="date" name="date" class="created_at" value="{{ old('$date') }}" />
+                <input type="date" name="date" class="created_at" value="{{ $contact['created_at'] }}" />
+                ~<input type="date" name="date" class="created_at" value="{{ $contact['created_at'] }}" />
             </div>
           </div>
         </div>
@@ -55,7 +55,7 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-              <input type="email" name="keyword" value="{{ old('keyword') }}" class="email" />
+              <input type="email" name="keyword" value="{{ $contact['email']}}" class="email" />
             </div>
           </div>
         </div>
@@ -69,20 +69,21 @@
       <div class="form__database-check">
         <p class="data-1">全35件中 11~20件</p>
         <nav class="pagination">
-          <a href="" class="pagination__prev">
+          <a href="/searches" class="pagination__prev">
             <span class="visuallyhidden">Previous Page</span>
           </a>
           <ul class="pagination__items">
-            <li class="is-active"><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
+            <li class="is-active"><a href="/seraches"></a></li>
+            <li><a href="/seraches"></a></li>
+            <li><a href="/searches"></a></li>
+            <li><a href="/seraches"></a></li>
           </ul>
-          <a href="" class="pagination__next">
+          <a href="/seraches" class="pagination__next">
             <span class="visuallyhidden">Next Page</span>
           </a>
         </nav>
       </div>
+      if(isset($contacts))($contacts as $contact)
       <table>
         <tr class="form__database-list">
           <th class="form__database-title">ID</th>
@@ -92,22 +93,120 @@
           <th class="form__database-title">ご意見</th>
         </tr>
         <tr class="form__database-list">
-          @foreach($searches as $search)
             <td class="form__database-content">
-              <p class="form__database-content-p">{{ $search['contact']['id'] }}{{ $search['contact']['fullname'] }}{{ $search['contact']['gender'] }}{{ $value->gender }}{{ $search['contact']['email'] }}{{ $search['contact']['option'] }}</p></td>
+              <p class="form__database-content-p">{{ $contact['id'] }}{{ $contact['fullname'] }}{{ $contact['gender'] }}{{ $contact['email'] }}{{ $contact['option'] }}</p></td>
             <td class="form__database-content">
-             <p class="option:hover">{{ $search['contact']['option'] }}</p>
+             <p class="option:hover">{{ $contact['option'] }}</p>
             </td>
             <td class="form__database-content">
               <form class="delete-form__button" action="/searches/delete" method="post">
-                <input type="hidden" name="id" value="{{ $search['id'] }}">
+                <input type="hidden" name="id" value="{{ $contact['id'] }}">
                 <button class="delete-form__button-submit" type="submit" value="送信">削除</button>
               </form>
             </td>
-            {{ $searches->links()}}
-          @endforeach
+            <td class="form__database-content">
+              <p class="form__database-content-p">{{ $contact['id'] }}{{ $contact['fullname'] }}{{ $contact['gender'] }}{{ $contact['email'] }}{{ $contact['option'] }}</p></td>
+            <td class="form__database-content">
+             <p class="option:hover">{{ $contact['option'] }}</p>
+            </td>
+            <td class="form__database-content">
+              <form class="delete-form__button" action="/searches/delete" method="post">
+                <input type="hidden" name="id" value="{{ $contact['id'] }}">
+                <button class="delete-form__button-submit" type="submit" value="送信">削除</button>
+              </form>
+            </td>
+            <td class="form__database-content">
+              <p class="form__database-content-p">{{ $contact['id'] }}{{ $contact['fullname'] }}{{ $contact['gender'] }}{{ $contact['email'] }}{{ $contact['option'] }}</p></td>
+            <td class="form__database-content">
+             <p class="option:hover">{{ $contact['option'] }}</p>
+            </td>
+            <td class="form__database-content">
+              <form class="delete-form__button" action="/searches/delete" method="post">
+                <input type="hidden" name="id" value="{{ $contact['id'] }}">
+                <button class="delete-form__button-submit" type="submit" value="送信">削除</button>
+              </form>
+            </td>
+            <td class="form__database-content">
+              <p class="form__database-content-p">{{ $contact['id'] }}{{ $contact['fullname'] }}{{ $contact['gender'] }}{{ $contact['email'] }}{{ $contact['option'] }}</p></td>
+            <td class="form__database-content">
+             <p class="option:hover">{{ $contact['option'] }}</p>
+            </td>
+            <td class="form__database-content">
+              <form class="delete-form__button" action="/searches/delete" method="post">
+                <input type="hidden" name="id" value="{{ $contact['id'] }}">
+                <button class="delete-form__button-submit" type="submit" value="送信">削除</button>
+              </form>
+            </td>
+            <td class="form__database-content">
+              <p class="form__database-content-p">{{ $contact['id'] }}{{ $contact['fullname'] }}{{ $contact['gender'] }}{{ $contact['email'] }}{{ $contact['option'] }}</p></td>
+            <td class="form__database-content">
+             <p class="option:hover">{{ $contact['option'] }}</p>
+            </td>
+            <td class="form__database-content">
+              <form class="delete-form__button" action="/searches/delete" method="post">
+                <input type="hidden" name="id" value="{{ $contact['id'] }}">
+                <button class="delete-form__button-submit" type="submit" value="送信">削除</button>
+              </form>
+            </td>
+            <td class="form__database-content">
+              <p class="form__database-content-p">{{ $contact['id'] }}{{ $contact['fullname'] }}{{ $contact['gender'] }}{{ $contact['email'] }}{{ $contact['option'] }}</p></td>
+            <td class="form__database-content">
+             <p class="option:hover">{{ $contact['option'] }}</p>
+            </td>
+            <td class="form__database-content">
+              <form class="delete-form__button" action="/searches/delete" method="post">
+                <input type="hidden" name="id" value="{{ $contact['id'] }}">
+                <button class="delete-form__button-submit" type="submit" value="送信">削除</button>
+              </form>
+            </td>
+            <td class="form__database-content">
+              <p class="form__database-content-p">{{ $contact['id'] }}{{ $contact['fullname'] }}{{ $contact['gender'] }}{{ $contact['email'] }}{{ $contact['option'] }}</p></td>
+            <td class="form__database-content">
+             <p class="option:hover">{{ $contact['option'] }}</p>
+            </td>
+            <td class="form__database-content">
+              <form class="delete-form__button" action="/searches/delete" method="post">
+                <input type="hidden" name="id" value="{{ $contact['id'] }}">
+                <button class="delete-form__button-submit" type="submit" value="送信">削除</button>
+              </form>
+            </td>
+            <td class="form__database-content">
+              <p class="form__database-content-p">{{ $contact['id'] }}{{ $contact['fullname'] }}{{ $contact['gender'] }}{{ $contact['email'] }}{{ $contact['option'] }}</p></td>
+            <td class="form__database-content">
+             <p class="option:hover">{{ $contact['option'] }}</p>
+            </td>
+            <td class="form__database-content">
+              <form class="delete-form__button" action="/searches/delete" method="post">
+                <input type="hidden" name="id" value="{{ $contact['id'] }}">
+                <button class="delete-form__button-submit" type="submit" value="送信">削除</button>
+              </form>
+            </td>
+            <td class="form__database-content">
+              <p class="form__database-content-p">{{ $contact['id'] }}{{ $contact['fullname'] }}{{ $contact['gender'] }}{{ $contact['email'] }}{{ $contact['option'] }}</p></td>
+            <td class="form__database-content">
+             <p class="option:hover">{{ $contact['option'] }}</p>
+            </td>
+            <td class="form__database-content">
+              <form class="delete-form__button" action="/searches/delete" method="post">
+                <input type="hidden" name="id" value="{{ $contact['id'] }}">
+                <button class="delete-form__button-submit" type="submit" value="送信">削除</button>
+              </form>
+            </td>
+            <td class="form__database-content">
+              <p class="form__database-content-p">{{ $contact['id'] }}{{ $contact['fullname'] }}{{ $contact['gender'] }}{{ $contact['email'] }}{{ $contact['option'] }}</p></td>
+            <td class="form__database-content">
+             <p class="option:hover">{{ $contact['option'] }}</p>
+            </td>
+            <td class="form__database-content">
+              <form class="delete-form__button" action="/searches/delete" method="post">
+                <input type="hidden" name="id" value="{{ $contact['id'] }}">
+                <button class="delete-form__button-submit" type="submit" value="送信">削除</button>
+              </form>
+            </td>
+            {{ $contacts->links()}}
         </tr>
       </table>
+      @endif
       <div class="option__alert">
         @if(session('message'))
           <div class="option__alert--message">

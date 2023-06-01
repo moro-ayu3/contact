@@ -30,10 +30,9 @@
               <input type="text" name="last_name" class="fullname" value="{{ old('fullname') }}" />
             </div>
             <div class="form__input--text-1">
-              <input type="text" name="first_name" class="fullname" value="{{ old
+              <input type="text" name=". first_name" class="fullname" value="{{ old
                 ('fullname') }}" />
             </div>
-            {{ $contact->last_name . $contact->first_name }}
            </div>
            <div class="example">
             <p class="form__example-1">例）山田</p>
@@ -53,9 +52,9 @@
           </div>
           <div class="form__group--content">
             <div class="form__input--radio">
-                <input type="radio" class="radio" id="1" name="gender" value="1" value="{{ old('like','gender') == 'male' ? 'checked' : '' }}"checked />
+                <input type="radio" class="radio" id="1" name="gender" value="男性" value="{{ old('like','gender') == 'male' ? 'checked' : '' }}"checked />
                 <label for="male" class="label__male">男性</label>
-                <input type="radio" class="radio" id="2" name="gender" value="2" value="{{ old('gender') }}" />
+                <input type="radio" class="radio" id="2" name="gender" value="女性" value="{{ old('gender') }}" />
                 <label for="female" class="label__female">女性</label>
             </div>
           </div>

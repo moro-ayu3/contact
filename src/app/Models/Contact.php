@@ -22,6 +22,22 @@ class Contact extends Model
 
     public function search()
     {
-       return $this->belongsTo(Search::class);
+       $contact_data = Search::with('contact');
+
+    if (!empty($keyword)) {
+    $contact_data->where('fullname', 'like', '%' . $keyword . '%');
+    }
+
+    if (!empty($keyword)) {
+    $contact_data->where('email', 'like', '%' . $keyword . '%');
+    }
+    
+    if(!empty($value)){
+    $contact_data->where('gender', $value);
+    }
+
+    if(!empty($date)){
+    $contact_date->where('created_at', $date);
+    }
     }
 }
