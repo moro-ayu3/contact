@@ -29,13 +29,13 @@ class ContactController extends Controller
   public function show()
   {
     $contacts = [];
-    return view('search');
+    return view('search', compact('contacts'));
   }
 
   public function search(Request $request)
   {
     
-    $contacts = Contact::Paginate(4)->$contact_data->get();
+    $contacts = Contact::Paginate(4)->KeywordSearch($request->keyword)->ValueSearch($request->value)->DateSearch($request->date)->get();
 
     return redirect('/searches', compact('contacts'));
   }

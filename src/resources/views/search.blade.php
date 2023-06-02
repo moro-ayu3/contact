@@ -24,7 +24,9 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
+              @if($contacts as $contact)
               <input type="text" name="keyword" class="fullname" value="{{ $contact['fullname'] }}" />
+              @endif
             </div>
           </div>
         </div>
@@ -34,7 +36,19 @@
           </div>
           <div class="form__group--content">
             <div class="form__input--radio">
-                <label class="label__all"><input type="radio" class="gender" id="0" name="value" value="全て" value="{{ $contact['gender'] }}"checked/>全て</label><label class="label__male"><input type="radio" class="gender" id="1" name="value" value="男性" value="{{ $contact['gender'] }}" />男性</label><label class="label__female"><input type="radio" class="gender" id="2" name="value" value="女性" value="{{ $contact['gender'] }}"/>女性</label>
+                  @if($contacts as $contact)
+                  <input type="radio" class="gender" id="全て" name="value" value="全て" value="{{ $contact['gender'] }}"checked/>
+                  @endif
+                  <label class="label__all" for="全て">全て
+                  </label>
+                  @if($contacts as $contact)
+                  <input type="radio" class="gender" id="男性" name="value" value="男性" value="{{ $contact['gender'] }}" />
+                  @endif
+                  <label class="label__male" for="男性">男性</label>
+                  @if($contacts as $contact)
+                  <input type="radio" class="gender" id="女性" name="value" value="女性" value="{{ $contact['gender'] }}"/>
+                  @endif
+                  <label class="label__female" for="女性">女性</label>
             </div>
           </div>
         </div>
@@ -83,7 +97,7 @@
           </a>
         </nav>
       </div>
-      if(isset($contacts))($contacts as $contact)
+      @if(isset($contacts))($contacts as $contact)
       <table>
         <tr class="form__database-list">
           <th class="form__database-title">ID</th>
@@ -206,7 +220,6 @@
             {{ $contacts->links()}}
         </tr>
       </table>
-      @endif
       <div class="option__alert">
         @if(session('message'))
           <div class="option__alert--message">
@@ -214,6 +227,7 @@
           </div>
         @endif
       </div>
+      @endif
     </div>
   </main>
 </body>

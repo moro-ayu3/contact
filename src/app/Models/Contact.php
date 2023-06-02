@@ -20,24 +20,29 @@ class Contact extends Model
          'option',
      ];
 
-    public function search()
+    public function scopeKeywordSearch($query, $keyword)
     {
-       $contact_data = Search::with('contact');
+       if (!empty($keyword)) {
+       $query->where('fullname', 'like', '%' . $keyword . '%');
+       }
 
-    if (!empty($keyword)) {
-    $contact_data->where('fullname', 'like', '%' . $keyword . '%');
+       if (!empty($keyword)) {
+       $query->where('email', 'like', '%' . $keyword . '%');
+       }
     }
 
-    if (!empty($keyword)) {
-    $contact_data->where('email', 'like', '%' . $keyword . '%');
+    public function scopeValueSearch($query, $value)
+    {
+       if(!empty($value)){
+       $query->where('gender', $value);
+       }
     }
     
-    if(!empty($value)){
-    $contact_data->where('gender', $value);
-    }
-
-    if(!empty($date)){
-    $contact_date->where('created_at', $date);
-    }
-    }
+    public function scopeDateSearch($query, $date)
+    {
+       if(!empty($date)){
+       $query->where('created_at', $date);
+       }
+    }  
 }
+
