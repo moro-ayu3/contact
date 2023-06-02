@@ -14,14 +14,14 @@ class ContactController extends Controller
 
    public function confirm(ContactRequest $request)
   {
-    $contact = $request->only(['fullname', 'gender','email', 'postcode', 'address', 'building_name', 'option']);
+    $contact = $request->only(['last_name', 'first_name', 'gender', 'email', 'postcode', 'address', 'building_name', 'option']);
     
     return view('confirm', compact('contact'));
   }
 
     public function store(ContactRequest $request)
   {
-    $contact = $request->only(['fullname', 'gender', 'email', 'postcode', 'address', 'building_name', 'option']);
+    $contact = $request->only(['last_name', 'first_name', 'gender', 'email', 'postcode', 'address', 'building_name', 'option']);
     Contact::create($contact);
     return view('thanks');
   } 
@@ -29,7 +29,8 @@ class ContactController extends Controller
   public function show()
   {
     $contacts = [];
-    return view('search', compact('contacts'));
+    $contact = $request->only(['last_name', 'first_name', 'gender', 'email', 'option']);
+    return view('search', compact('contacts','contact'));
   }
 
   public function search(Request $request)

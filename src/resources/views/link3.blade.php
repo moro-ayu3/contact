@@ -8,7 +8,8 @@
   <title>Contact</title>
   <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
   <link rel="stylesheet" href="{{ asset('css/search.css') }}" />
-  <link rel="next" href="/seaches/2">
+  <link rel="prev" href="/seaches/2">
+  <link rel="next" href="/searches/4">
 </head>
 
 <body>
@@ -84,16 +85,16 @@
       <div class="form__database-check">
         <p class="data-1">全35件中 11~20件</p>
         <nav class="pagination">
-          <a href="/searches" class="pagination__prev">
+          <a href="/searches/2" class="pagination__prev" rel="prev">
             <span class="visuallyhidden">Previous Page</span>
           </a>
           <ul class="pagination__items">
-            <li class="is-active"><a href="/seraches" remote="false" class="link">1</a></li>
-            <li><a href="/seraches/2" rel="next" class="link">2</a></li>
-            <li><a href="/searches/3" class="link">3</a></li>
-            <li><a href="/seraches/4" class="link">4</a></li>
+            <li class="is-active"><a href="/seraches">1</a></li>
+            <li><a href="/searches/2" rel="prev" class="link">2</li>
+            <li><a href="/seraches/3" remote="false" class="link">3</a></li>
+            <li><a href="/seraches/4" rel="next" class="link">4</a></li>
           </ul>
-          <a href="/seraches/2" class="pagination__next" rel="next">
+          <a href="/seraches/4" class="pagination__next" rel="next">
             <span class="visuallyhidden">Next Page</span>
           </a>
         </nav>
