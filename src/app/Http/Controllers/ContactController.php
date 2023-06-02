@@ -28,9 +28,8 @@ class ContactController extends Controller
 
   public function show()
   {
-    $contacts = [];
-    $contact = $request->only(['last_name', 'first_name', 'gender', 'email', 'option']);
-    return view('search', compact('contacts','contact'));
+    $contacts = Contact::all();
+    return view('search', compact('contacts'));
   }
 
   public function search(Request $request)
@@ -38,14 +37,14 @@ class ContactController extends Controller
     
     $contacts = Contact::Paginate(4)->KeywordSearch($request->keyword)->ValueSearch($request->value)->DateSearch($request->date)->get();
 
-    return redirect('/searches', compact('contacts'));
+    return redirect('/searches/serach', '/searches/2', '/searches/3', '/searches/4', compact('contacts'))->with('message', 'ご意見は25文字以上の場合は...');
   }
 
   public function delete(Request $request)
   {
     Contact::find($request->id)->delete();
 
-    return redirect('/searches');
+    return redirect('/searches/search', '/searches/2', '/searches/3', '/searches/4');
   } 
 }
 
