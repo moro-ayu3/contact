@@ -28,8 +28,7 @@ class ContactController extends Controller
 
   public function show()
   {
-    $contacts = Contact::all();
-    return view('search', compact('contacts'));
+    return view('search');
   }
 
   public function search(Request $request)
