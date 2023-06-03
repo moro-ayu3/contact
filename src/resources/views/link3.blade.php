@@ -111,17 +111,14 @@
         @foreach($contacts as $contact)
         <tr class="form__database-list">
             <td class="form__database-content">
-              <p class="form__database-content-p">{{ $contact['id'] }}{{ $contact['fullname'] }}{{ $contact['gender'] }}{{ $contact['email'] }}{{ $contact['option'] }}</p></td>
-            <td class="form__database-content">
-             <p class="option:hover">{{ $contact['option'] }}</p>
-            </td>
+              <p class="form__database-content-p">{{ $contact['id'] }}{{ $contact['fullname'] }}{{ $contact['gender'] }}{{ $contact['email'] }}<input id="swich" class="swich_seetting" type="checkbox">
+              <label class="tooltip" for="swich">{{ $contact['option'] }}<span class="option:hover">{{ $contact['option'] }}</span></label></p></td>
             <td class="form__database-content">
               <form class="delete-form__button" action="/searches/delete" method="post">
                 <input type="hidden" name="id" value="{{ $contact['id'] }}">
                 <button class="delete-form__button-submit" type="submit" value="送信">削除</button>
               </form>
             </td>
-            {{ $contacts->links()}}
         </tr>
         @endforeach
       </table>

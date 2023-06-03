@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
 
@@ -28,13 +29,14 @@ class ContactController extends Controller
 
   public function show()
   {
-    return view('search');
+    $contacts = Contact::all();
+    return view('search', compact('contacts'));
   }
 
   public function search(Request $request)
   {
     
-    $contacts = Contact::Paginate(4)->KeywordSearch($request->keyword)->ValueSearch($request->value)->DateSearch($request->date)->get();
+    $contacts = Contact::simplePaginate(10)->KeywordSearch($request->keyword)->ValueSearch($request->value)->DateSearch($request->date)->get();
 
     return redirect('/searches/serach', '/searches/2', '/searches/3', '/searches/4', compact('contacts'))->with('message', 'ご意見は25文字以上の場合は...');
   }

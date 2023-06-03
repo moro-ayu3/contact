@@ -270,9 +270,53 @@ a {
   font-size: 13px;
 }
 
-.option:hover {
+.swich_setting {
+  display: none;
+}
+
+.tooltip {
+  position: relative;
+  cursor: pointer;
+  padding: 0 5px;
   font-size: 15px;
   color: #000;
+}
+
+.option:hover {
+  width: 150px;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 15px;
+  padding: 8px;
+  border-radius: 10px;
+  background-color: #666;
+  font-size: 15px;
+  color: #fff;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1;
+  transition: 0.5s all;
+}
+
+.option:hover::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-bottom: 12px solid #666;
+  position: absolute;
+  bottom: 99%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.swich_setting:checked+.tooltip .option:hover {
+  top: 100%;
+  visibility: visible;
+  opacity: 1;
 }
 
 .delete-form__button {

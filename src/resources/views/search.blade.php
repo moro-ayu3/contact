@@ -25,9 +25,7 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-              @foreach($contacts as $contact)
-              <input type="text" name="keyword" class="fullname" value="{{ $contact['last_name'] }}" value="{{ $contact['first_name'] }}" />
-              @endforeach
+              <input type="text" name="keyword" class="fullname"  />
             </div>
           </div>
         </div>
@@ -37,15 +35,13 @@
           </div>
           <div class="form__group--content">
             <div class="form__input--radio">
-                  @foreach($contacts as $contact)
-                  <input type="radio" class="gender" id="全て" name="value" value="全て" value="{{ $contact['gender'] }}"checked/>
+                  <input type="radio" class="gender" id="全て" name="value" value="全て" checked/>
                   <label class="label__all" for="全て">全て
                   </label>
-                  <input type="radio" class="gender" id="男性" name="value" value="男性" value="{{ $contact['gender'] }}" />
+                  <input type="radio" class="gender" id="男性" name="value" value="男性"  />
                   <label class="label__male" for="男性">男性</label>
-                  <input type="radio" class="gender" id="女性" name="value" value="女性" value="{{ $contact['gender'] }}"/>
+                  <input type="radio" class="gender" id="女性" name="value" value="女性" />
                   <label class="label__female" for="女性">女性</label>
-                  @endforeach
             </div>
           </div>
         </div>
@@ -55,10 +51,8 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-                @foreach($contacts as $contact)
-                <input type="date" name="date" class="created_at" value="{{ $contact['created_at'] }}" />
-                ~<input type="date" name="date" class="created_at" value="{{ $contact['created_at'] }}" />
-                @endforeach
+                <input type="date" name="date" class="created_at" />
+                ~<input type="date" name="date" class="created_at" />
             </div>
           </div>
         </div>
@@ -68,9 +62,7 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-              @foreach($contacts as $contact)
-              <input type="email" name="keyword" value="{{ $contact['email']}}" class="email" />
-              @endforeach
+              <input type="email" name="keyword" class="email" />
             </div>
           </div>
         </div>
@@ -110,17 +102,16 @@
         @foreach($contacts as $contact)
         <tr class="form__database-list">
             <td class="form__database-content">
-              <p class="form__database-content-p">{{ $contact['id'] }}{{ $contact['fullname'] }}{{ $contact['gender'] }}{{ $contact['email'] }}{{ $contact['option'] }}</p></td>
-            <td class="form__database-content">
-             <p class="option:hover">{{ $contact['option'] }}</p>
-            </td>
+              <p class="form__database-content-p">{{ $contact['id'] }}{{ $contact['fullname'] }}{{ $contact['gender'] }}{{ $contact['email'] }}
+              <input id="swich" class="swich_seetting" type="checkbox">
+              <label class="tooltip" for="swich">{{ $contact['option'] }}<span class="option:hover">{{ $contact['option'] }}</span></label></p></td>
             <td class="form__database-content">
               <form class="delete-form__button" action="/searches/delete" method="post">
+                @csrf
                 <input type="hidden" name="id" value="{{ $contact['id'] }}">
                 <button class="delete-form__button-submit" type="submit" value="送信">削除</button>
               </form>
             </td>
-            {{ $contacts->links()}}
         </tr>
         @endforeach
       </table>
