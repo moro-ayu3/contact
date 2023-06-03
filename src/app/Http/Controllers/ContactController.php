@@ -29,6 +29,7 @@ class ContactController extends Controller
 
   public function show()
   {
+    $contacts = Contact::all();
     return view('search');
     return view('link2');
     return view('link3');
@@ -37,9 +38,12 @@ class ContactController extends Controller
 
   public function search(Request $request)
   {
-    $contacts =Contact::all();
-    $contacts = Contact::simplePaginate(10)->KeywordSearch($request->keyword)->ValueSearch($request->value)->DateSearch($request->date)->get();
-
+    $keyword = $request['last_name'];
+    $keyword = $request['first_name'];
+    $keyword = $request['email'];
+    $value = $request['gender'];
+    $date = $request['created_at'];
+    $contacts = Contact::doSearch($keyword, $value, $date)->paginate(4);
     return redirect('/searches', compact('contacts'))->with('message', 'ご意見は25文字以上の場合は...');
     return redirect('/searches/2', compact('contacts'))->with('message', 'ご意見は25文字以上の場合は...');
     return redirect('/searches/3', compact('contacts'))->with('message', 'ご意見は25文字以上の場合は...');

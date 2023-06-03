@@ -21,8 +21,10 @@ class Contact extends Model
          'option',
      ];
 
-    public function scopeKeywordSearch($query, $keyword)
+    public function doSearch($keyword, $value, $date)
     {
+       $query = self::query();
+
        if (!empty($keyword)) {
        $query->where('last_name', 'like', '%' . $keyword . '%');
        }
@@ -34,20 +36,17 @@ class Contact extends Model
        if (!empty($keyword)) {
        $query->where('email', 'like', '%' . $keyword . '%');
        }
-    }
 
-    public function scopeValueSearch($query, $value)
-    {
        if(!empty($value)){
        $query->where('gender', $value);
        }
-    }
-    
-    public function scopeDateSearch($query, $date)
-    {
+
        if(!empty($date)){
        $query->where('created_at', $date);
        }
-    }  
+
+       $results = $query->get();
+       return $results;
+    }
 }
 
