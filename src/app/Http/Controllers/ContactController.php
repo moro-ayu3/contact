@@ -38,14 +38,14 @@ class ContactController extends Controller
     
     $contacts = Contact::simplePaginate(10)->KeywordSearch($request->keyword)->ValueSearch($request->value)->DateSearch($request->date)->get();
 
-    return redirect('/searches/serach', '/searches/2', '/searches/3', '/searches/4', compact('contacts'))->with('message', 'ご意見は25文字以上の場合は...');
+    return redirect('/searches', '/searches/2', '/searches/3', '/searches/4', compact('contacts'))->with('message', 'ご意見は25文字以上の場合は...');
   }
 
   public function delete(Request $request)
   {
     Contact::find($request->id)->delete();
 
-    return redirect('/searches/search', '/searches/2', '/searches/3', '/searches/4');
+    return redirect('/searches', '/searches/2', '/searches/3', '/searches/4');
   } 
 }
 

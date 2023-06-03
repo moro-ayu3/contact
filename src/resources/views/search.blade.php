@@ -80,7 +80,7 @@
             <span class="visuallyhidden">Previous Page</span>
           </a>
           <ul class="pagination__items">
-            <li class="is-active"><a href="/seraches/search" remote="false" class="link">1</a></li>
+            <li class="is-active"><a href="/seraches" remote="false" class="link">1</a></li>
             <li><a href="/seraches/2" rel="next" class="link">2</a></li>
             <li><a href="/searches/3" class="link">3</a></li>
             <li><a href="/seraches/4" class="link">4</a></li>
@@ -102,7 +102,7 @@
         @foreach($contacts as $contact)
         <tr class="form__database-list">
             <td class="form__database-content">
-              <p class="form__database-content-p">{{ $contact['id'] }}{{ $contact['fullname'] }}{{ $contact['gender'] }}{{ $contact['email'] }}
+              <p class="form__database-content-p">{{ $contact['id'] }}{{ $contact['last_name'] }}{{ $contact['first_name'] }}{{ $contact['gender'] }}{{ $contact['email'] }}
               <input id="swich" class="swich_seetting" type="checkbox">
               <label class="tooltip" for="swich">{{ $contact['option'] }}<span class="option:hover">{{ $contact['option'] }}</span></label></p></td>
             <td class="form__database-content">

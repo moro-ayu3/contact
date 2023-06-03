@@ -8,7 +8,7 @@
   <title>Contact</title>
   <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
   <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
-  <script src="http://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+  <script src="https://yubinbango.github.io/yubinbango.js" charset="UTF-8"></script>
 </head>
 
 <body>
@@ -83,7 +83,7 @@
           </div>
           <div class="form__group-content">
             <div class="form__input--text">
-              〒<input type="text" name="postcode" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2address(this,'','address','address');" value="{{ old('postcode') }}" />
+              〒<input type="text" name="postcode" size="10" maxlength="8" pattern="^[0-9]{3}-?[0-9]{4}$" value="{{ old('postcode') }}" required/>
             </div>
             <p class="form__example">例）123-4567</p>
             <div class="form__error">
