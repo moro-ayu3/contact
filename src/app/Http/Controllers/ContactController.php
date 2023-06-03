@@ -29,23 +29,31 @@ class ContactController extends Controller
 
   public function show()
   {
-    $contacts = Contact::all();
-    return view('search', compact('contacts'));
+    return view('search');
+    return view('link2');
+    return view('link3');
+    return view('link4');
   }
 
   public function search(Request $request)
   {
-    
+    $contacts =Contact::all();
     $contacts = Contact::simplePaginate(10)->KeywordSearch($request->keyword)->ValueSearch($request->value)->DateSearch($request->date)->get();
 
-    return redirect('/searches', '/searches/2', '/searches/3', '/searches/4', compact('contacts'))->with('message', 'ご意見は25文字以上の場合は...');
+    return redirect('/searches', compact('contacts'))->with('message', 'ご意見は25文字以上の場合は...');
+    return redirect('/searches/2', compact('contacts'))->with('message', 'ご意見は25文字以上の場合は...');
+    return redirect('/searches/3', compact('contacts'))->with('message', 'ご意見は25文字以上の場合は...');
+    return redirect('/searches/4', compact('contacts'))->with('message', 'ご意見は25文字以上の場合は...');
   }
 
   public function delete(Request $request)
   {
     Contact::find($request->id)->delete();
 
-    return redirect('/searches', '/searches/2', '/searches/3', '/searches/4');
+    return redirect('/searches');
+    return redirect('/searches/2');
+    return redirect('/searches/3');
+    return redirect('/searches/4');
   } 
 }
 

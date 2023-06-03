@@ -13,7 +13,7 @@ Route::post('/contacts/confirm', [ContactController::class, 'confirm'])->name('c
 Route::post('/contacts', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/searches', [ContactController::class, 'show'])->name('contact.show');
 Route::get('/searches/search', [ContactController::class, 'search'])->name('contact.search');
-Route::get('/searches/2', [ContactController::class, 'search'])->name('contact.search');
-Route::get('/searches/3', [ContactController::class, 'search'])->name('contact.search');
-Route::get('/searches/4', [ContactController::class, 'search'])->name('contact.search');
+Route::get('/searches/2', [ContactController::class, 'show'])->name('contact.show');
+Route::get('/searches/3', [ContactController::class, 'show'])->name('contact.show');
+Route::get('/searches/4', [ContactController::class, 'show'])->name('contact.show');
 Route::post('/searches/delete', [ContactController::class, 'delete'])->name('contact.delete');

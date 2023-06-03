@@ -26,6 +26,7 @@
           <div class="form__group-content">
             <div class="form__input--text">
               <input type="text" name="keyword" class="fullname"  />
+              <input type="text" name="keyword" class="fullname" />
             </div>
           </div>
         </div>

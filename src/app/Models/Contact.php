@@ -24,7 +24,11 @@ class Contact extends Model
     public function scopeKeywordSearch($query, $keyword)
     {
        if (!empty($keyword)) {
-       $query->where('fullname', 'like', '%' . $keyword . '%');
+       $query->where('last_name', 'like', '%' . $keyword . '%');
+       }
+
+       if (!empty($keyword)) {
+       $query->where('first_name', 'like', '%' . $keyword . '%');
        }
 
        if (!empty($keyword)) {
