@@ -126,7 +126,6 @@
       </div>
       @endif
     </div>
-    {{ $contacts->links() }}
   </main>
 </body>
 
